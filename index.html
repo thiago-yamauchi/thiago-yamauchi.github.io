@@ -20,7 +20,7 @@
   html,body{margin:0;background:var(--bg);color:var(--ink);
     font-family:Inter,system-ui,-apple-system,sans-serif;}
   button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
-  input{font-family:inherit;}
+  input,textarea{font-family:inherit;}
   .tap:active{transform:scale(.97);}
   input:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
   ::-webkit-scrollbar{width:0;height:0;}
@@ -52,42 +52,74 @@
   .tab .n{opacity:.55;margin-left:5px;}
   .tab.on .n{opacity:.85;}
 
-  .add{padding:8px 16px 4px;display:flex;gap:8px;}
-  .add input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;
-    font-size:14px;background:var(--card);color:var(--ink);outline:none;}
-  .add button{background:var(--amber);color:#fff;border-radius:10px;padding:0 14px;
-    display:flex;align-items:center;gap:4px;font-weight:600;font-size:14px;}
+  .actionrow{display:flex;gap:8px;padding:10px 16px 2px;}
+  .actionrow .abtn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:11px;border-radius:12px;font-weight:600;font-size:13.5px;border:1px solid var(--line);background:var(--card);color:var(--ink);}
+  .actionrow .abtn.primary{background:var(--green);color:var(--cream);border-color:var(--green);}
 
   main{padding:8px 16px 0;}
   section{background:var(--card);border:1px solid var(--line);border-radius:16px;
     margin-bottom:12px;overflow:hidden;}
-  .chead{width:100%;display:flex;align-items:center;gap:12px;padding:14px 16px;text-align:left;}
-  .chead .emoji{font-size:20px;}
-  .chead .title{flex:1;}
-  .chead .title b{display:block;font-weight:600;font-size:15px;line-height:1.2;}
-  .chead .title small{font-size:12px;color:var(--sub);}
-  .chev{transition:transform .2s;color:var(--muted);}
+  .chead{display:flex;align-items:center;gap:10px;padding:12px 14px;}
+  .emoji-btn{font-size:21px;width:40px;height:40px;border-radius:11px;display:flex;
+    align-items:center;justify-content:center;background:var(--bg);flex:0 0 auto;}
+  .chead-main{flex:1;display:flex;align-items:center;gap:10px;text-align:left;}
+  .chead-main .title{flex:1;}
+  .chead-main .title b{display:block;font-weight:600;font-size:15px;line-height:1.2;}
+  .chead-main .title small{font-size:12px;color:var(--sub);}
+  .chev{transition:transform .2s;color:var(--muted);display:flex;}
   .chev.open{transform:rotate(180deg);}
+
   ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
-  li{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--bg);
-    transition:opacity .15s;}
-  li.ex{opacity:.5;}
+  li{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--bg);}
   .chk{width:24px;height:24px;flex:0 0 auto;border-radius:7px;border:2px solid var(--muted);
     background:transparent;display:flex;align-items:center;justify-content:center;}
   .chk.on{background:var(--green);border-color:var(--green);}
   .label{flex:1;font-size:14.5px;cursor:pointer;}
   li.bought .label{text-decoration:line-through;text-decoration-color:var(--green);}
-  li.ex .label{text-decoration:line-through;color:var(--muted);cursor:default;}
   .okpill{font-size:11px;font-weight:600;color:var(--green);background:var(--greenSoft);
     padding:3px 8px;border-radius:999px;}
   .icbtn{width:30px;height:30px;flex:0 0 auto;border-radius:8px;display:flex;
     align-items:center;justify-content:center;color:var(--muted);}
   .icbtn.exc{background:var(--amberSoft);color:var(--amber);}
+
+  .additem{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--bg);background:var(--cream);}
+  .additem input{flex:1;border:1px solid var(--line);border-radius:9px;padding:8px 10px;
+    font-size:13.5px;background:#fff;color:var(--ink);outline:none;}
+  .additem .add-go{background:var(--amber);color:#fff;border-radius:9px;width:40px;
+    font-size:22px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+
   .empty{text-align:center;padding:48px 24px;color:var(--sub);}
   .reset{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;
     padding:12px;border-radius:12px;color:var(--sub);font-size:13.5px;font-weight:500;
     border:1px solid var(--line);background:var(--card);}
   svg{display:block;}
+
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(20,18,16,.45);display:none;
+    align-items:flex-end;justify-content:center;z-index:50;}
+  .overlay.on{display:flex;}
+  .modal{background:var(--card);width:100%;max-width:480px;border-radius:20px 20px 0 0;
+    padding:20px 18px max(20px,env(safe-area-inset-bottom));max-height:88vh;overflow:auto;}
+  .modal h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;margin:0 0 4px;}
+  .modal .lbl{font-size:12.5px;color:var(--sub);margin:14px 0 6px;font-weight:600;}
+  .modal input[type=text],.modal textarea{width:100%;border:1px solid var(--line);border-radius:10px;
+    padding:10px 12px;font-size:14px;background:var(--bg);color:var(--ink);outline:none;}
+  .modal textarea{min-height:64px;resize:vertical;font-family:ui-monospace,monospace;font-size:11px;word-break:break-all;}
+  .emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:4px 0;}
+  .emoji-opt{font-size:21px;padding:7px 0;border-radius:10px;background:var(--bg);}
+  .emoji-opt.sel{outline:2px solid var(--green);background:var(--greenSoft);}
+  .modal-actions{display:flex;gap:8px;margin-top:16px;justify-content:flex-end;flex-wrap:wrap;}
+  .btn{background:var(--green);color:var(--cream);border-radius:10px;padding:10px 14px;font-weight:600;font-size:14px;}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .filelabel{display:inline-flex;align-items:center;cursor:pointer;}
+  .modal hr{border:none;border-top:1px solid var(--line);margin:18px 0;}
+  .warn{font-size:12px;color:var(--amber);margin-top:10px;}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(10px);
+    background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;
+    z-index:60;opacity:0;transition:all .2s;pointer-events:none;max-width:90%;text-align:center;}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
 </head>
@@ -119,18 +151,23 @@
     <div class="tabs" id="tabs"></div>
   </div>
 
-  <div class="add">
-    <input id="newitem" placeholder="Adicionar um item meu…" />
-    <button id="addbtn" class="tap" aria-label="Adicionar">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Add
+  <div class="actionrow">
+    <button class="abtn primary tap" id="newcat">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Nova categoria
+    </button>
+    <button class="abtn tap" id="backup">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v14"/></svg> Backup / Enviar
     </button>
   </div>
 
   <main id="list"></main>
 </div>
 
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+
 <script>
-/* ---------- dados ---------- */
+/* ---------- catálogo base ---------- */
 const CATEGORIES = [
   {icon:"🧴",name:"Produtos de Limpeza",items:["Sabão líquido para roupas","Sabão em pó","Sabão em barra","Amaciante","Alvejante / tira-manchas","Removedor de manchas","Água sanitária","Perfume para roupas","Detergente","Desengordurante","Limpa alumínio","Limpa inox","Saponáceo / sapólio","Esponja de aço (Bombril)","Desinfetante","Limpador de vaso sanitário","Pastilha sanitária","Removedor de limo / mofo","Limpa azulejo / pedra","Limpador multiuso","Limpa vidros","Limpador de piso","Cera para piso","Lustra-móveis","Álcool líquido 70%","Álcool em gel","Cloro","Aromatizante de ambiente","Inseticida","Naftalina / anti-mofo","Limpa estofados / carpete","Removedor geral"]},
   {icon:"🧹",name:"Utensílios de Limpeza",items:["Vassoura comum","Vassoura de pelo / piaçava","Pá de lixo","Rodo","Mop / esfregão","Balde","Bacia","Esponjas multiuso","Esponja de aço","Pano de chão","Pano multiuso (Perfex)","Pano de prato","Flanela","Escova de mão / escovão","Escova p/ vaso sanitário + suporte","Espanador","Luvas de borracha","Borrifador","Desentupidor","Limpa-teto","Lixeiras","Sacos de lixo","Cesto de roupa suja"]},
@@ -152,40 +189,57 @@ const CATEGORIES = [
   {icon:"💻",name:"Escritório / Home Office",items:["Mesa","Cadeira","Luminária de mesa","Filtro de linha / suporte de cabos","Papelaria","Organizadores / gaveteiro"]},
 ];
 const PRE_OWNED = ["Geladeira"];
-const KEY = "casa-nova-v1";
+const EMOJIS = ["🧴","🧹","🧽","🧼","🪣","🧺","🚿","🛁","🚽","🪥","🧻","🍳","🍽️","🥘","🔪","🥄","☕","🫖","🧊","🔌","🔋","💡","📦","🛏️","🛋️","🪑","🚪","🪟","🪞","🛒","🧯","🩹","💊","🌿","🪴","🌳","🐾","💻","📚","🔧","🔨","🪛","🧰","🕯️","🔦","📝","🔑","🗑️","🪠","🌡️","⭐","❤️","🏠","🧦","👕","🪒","🎁","🧸","🍼","🧷","🚗","🎨","🎮","🧩"];
+const KEY = "casa-nova-v2";
 
 /* ---------- estado ---------- */
-let status = {};   // id -> {ex,b}
-let custom = [];   // {id,label}
-let openCats = {}; // key -> bool
+let status = {};          // id -> {ex,b}
+let added = {};           // catKey -> [{id,label}]
+let userCats = [];        // [{key,name,icon}]
+let iconOverrides = {};   // builtinKey -> emoji
+let openCats = {};
 let filter = "tudo";
 let query = "";
 
 function load(){
   try{
-    const raw = localStorage.getItem(KEY);
-    if(raw){ const o = JSON.parse(raw); status=o.status||{}; custom=o.custom||[]; return; }
+    const v2 = localStorage.getItem(KEY);
+    if(v2){ const o=JSON.parse(v2); status=o.status||{}; added=o.added||{}; userCats=o.userCats||[]; iconOverrides=o.iconOverrides||{}; return; }
+    const v1 = localStorage.getItem("casa-nova-v1");
+    if(v1){
+      const o=JSON.parse(v1); status=o.status||{};
+      if(o.custom && o.custom.length){ const k="u-legacy"; userCats=[{key:k,name:"Meus itens",icon:"📝"}]; added[k]=o.custom.map(c=>({id:c.id,label:c.label})); }
+      save(); return;
+    }
   }catch(e){}
   CATEGORIES.forEach((c,ci)=>c.items.forEach((it,ii)=>{ if(PRE_OWNED.includes(it)) status[ci+"-"+ii]={b:true}; }));
 }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify({status,custom})); }catch(e){} }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify({v:2,status,added,userCats,iconOverrides})); }catch(e){} }
 
 const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const isEx = id => !!(status[id]&&status[id].ex);
 const isB  = id => !!(status[id]&&status[id].b);
+const newId = () => "i-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6);
 
 function allCats(){
-  const base = CATEGORIES.map((c,ci)=>({icon:c.icon,name:c.name,key:"c"+ci,custom:false,
-    items:c.items.map((label,ii)=>({id:ci+"-"+ii,label}))}));
-  if(custom.length) base.push({icon:"📝",name:"Meus itens",key:"custom",custom:true,items:custom});
-  return base;
+  const out = CATEGORIES.map((c,ci)=>{
+    const key="c"+ci;
+    const base=c.items.map((label,ii)=>({id:ci+"-"+ii,label,custom:false}));
+    const extra=(added[key]||[]).map(x=>({id:x.id,label:x.label,custom:true}));
+    return {key,icon:iconOverrides[key]||c.icon,name:c.name,user:false,items:base.concat(extra)};
+  });
+  userCats.forEach(uc=>{
+    out.push({key:uc.key,icon:uc.icon||"📦",name:uc.name,user:true,items:(added[uc.key]||[]).map(x=>({id:x.id,label:x.label,custom:true}))});
+  });
+  return out;
 }
 function matchItem(it){
-  if(query && !norm(it.label).includes(norm(query))) return false;
   const ex=isEx(it.id), b=isB(it.id);
-  if(filter==="falta") return !ex && !b;
-  if(filter==="comprados") return !ex && b;
-  if(filter==="excluidos") return ex;
+  if(filter==="excluidos"){ if(!ex) return false; }
+  else { if(ex) return false; }
+  if(query && !norm(it.label).includes(norm(query))) return false;
+  if(filter==="falta") return !b;
+  if(filter==="comprados") return b;
   return true;
 }
 function stats(){
@@ -197,19 +251,29 @@ function stats(){
 
 /* ---------- ações ---------- */
 function toggleBought(id){ const s=status[id]||{}; status[id]={ex:false,b:!s.b}; save(); render(); }
-function toggleEx(id){ const s=status[id]||{}; status[id]={...s,ex:!s.ex}; save(); render(); }
+function toggleEx(id){ const s=status[id]||{}; status[id]={b:s.b,ex:!s.ex}; save(); render(); }
 function toggleOpen(k){ openCats[k]=!openCats[k]; render(); }
-function addItem(){
-  const v=document.getElementById("newitem").value.trim();
-  if(!v) return;
-  custom.push({id:"x-"+Date.now(),label:v});
-  document.getElementById("newitem").value=""; save(); render();
-}
-function removeCustom(id){ custom=custom.filter(i=>i.id!==id); delete status[id]; save(); render(); }
-function reset(){ if(!confirm("Recomeçar do zero? Isso limpa todas as marcações e itens adicionados.")) return;
-  status={}; custom=[]; openCats={}; save(); render(); }
+function addItem(catKey,label){ label=(label||"").trim(); if(!label) return; (added[catKey]=added[catKey]||[]).push({id:newId(),label}); openCats[catKey]=true; save(); render(); }
+function deleteAddedItem(id){ for(const k in added){ const i=added[k].findIndex(x=>x.id===id); if(i>=0){ added[k].splice(i,1); break; } } delete status[id]; save(); render(); }
+function setIcon(key,emo){ if(/^c\d+$/.test(key)) iconOverrides[key]=emo; else{ const u=userCats.find(c=>c.key===key); if(u) u.icon=emo; } save(); render(); }
+function deleteCategory(key){ (added[key]||[]).forEach(it=>delete status[it.id]); delete added[key]; userCats=userCats.filter(c=>c.key!==key); delete openCats[key]; save(); render(); }
+function reset(){ if(!confirm("Recomeçar do zero? Isso limpa todas as marcações, categorias e itens adicionados.")) return; status={}; added={}; userCats=[]; iconOverrides={}; openCats={}; save(); render(); }
 
-/* ---------- ícones ---------- */
+/* ---------- backup ---------- */
+const enc = s => btoa(unescape(encodeURIComponent(s)));
+const dec = s => decodeURIComponent(escape(atob(s)));
+function exportObj(){ return {v:2,status,added,userCats,iconOverrides}; }
+function exportCode(){ return enc(JSON.stringify(exportObj())); }
+function importData(raw){
+  raw=(raw||"").trim(); if(!raw) return false;
+  let obj=null;
+  try{ obj=JSON.parse(raw); }catch(e){ try{ obj=JSON.parse(dec(raw)); }catch(e2){ return false; } }
+  if(!obj||typeof obj!=="object"||!("status" in obj)) return false;
+  status=obj.status||{}; added=obj.added||{}; userCats=obj.userCats||[]; iconOverrides=obj.iconOverrides||{};
+  save(); return true;
+}
+
+/* ---------- ícones svg ---------- */
 const ic = {
   check:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
   x:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
@@ -218,6 +282,7 @@ const ic = {
   chev:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
   reset:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
 };
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 
 /* ---------- render ---------- */
 function render(){
@@ -230,63 +295,150 @@ function render(){
   document.getElementById("s-excl").textContent = st.excl;
 
   const tabsData=[["tudo","Tudo",st.total],["falta","Falta comprar",st.missing],["comprados","Comprados",st.bought],["excluidos","Excluídos",st.excl]];
-  document.getElementById("tabs").innerHTML = tabsData.map(([id,l,n])=>
-    `<button class="tab tap ${filter===id?'on':''}" data-tab="${id}">${l}<span class="n">${n}</span></button>`).join("");
+  document.getElementById("tabs").innerHTML = tabsData.map(function(t){
+    return '<button class="tab tap '+(filter===t[0]?'on':'')+'" data-tab="'+t[0]+'">'+t[1]+'<span class="n">'+t[2]+'</span></button>';
+  }).join("");
 
   const expandAll = filter!=="tudo" || query.trim()!=="";
-  const cats = allCats();
+  const canAdd = filter==="tudo" && query.trim()==="";
   let html="";
-  cats.forEach(cat=>{
+  allCats().forEach(function(cat){
     const visible = cat.items.filter(matchItem);
-    if(!visible.length) return;
-    const inclN = cat.items.filter(i=>!isEx(i.id)).length;
-    const boughtN = cat.items.filter(i=>!isEx(i.id)&&isB(i.id)).length;
+    const inclN = cat.items.filter(function(i){return !isEx(i.id);}).length;
+    const boughtN = cat.items.filter(function(i){return !isEx(i.id)&&isB(i.id);}).length;
+    if(visible.length===0 && !(canAdd)) return;            // esconde no modo filtrado
+    if(visible.length===0 && canAdd && cat.items.length>0 && !cat.user) return; // esconde built-in totalmente excluída
     const open = expandAll || openCats[cat.key];
-    html += `<section><button class="chead tap" data-open="${cat.key}" ${expandAll?'disabled style="cursor:default"':''}>
-      <span class="emoji">${cat.icon}</span>
-      <span class="title"><b>${cat.name}</b><small>${boughtN}/${inclN} comprados${expandAll?` · ${visible.length} aqui`:''}</small></span>
-      ${expandAll?'':`<span class="chev ${open?'open':''}">${ic.chev}</span>`}
-    </button>`;
+
+    html += '<section><div class="chead">';
+    html += '<button class="emoji-btn tap" data-icon="'+cat.key+'" aria-label="Trocar ícone">'+cat.icon+'</button>';
+    html += '<button class="chead-main tap" data-open="'+(expandAll?'':cat.key)+'"><span class="title"><b>'+esc(cat.name)+'</b><small>'+boughtN+'/'+inclN+' comprados'+(expandAll&&visible.length?(' · '+visible.length+' aqui'):'')+'</small></span>'+(expandAll?'':'<span class="chev '+(open?'open':'')+'">'+ic.chev+'</span>')+'</button>';
+    if(cat.user) html += '<button class="icbtn tap" data-delcat="'+cat.key+'" aria-label="Excluir categoria">'+ic.trash+'</button>';
+    html += '</div>';
+
     if(open){
-      html += "<ul>"+visible.map(it=>{
-        const ex=isEx(it.id), b=isB(it.id);
-        return `<li class="${ex?'ex':''} ${b&&!ex?'bought':''}">
-          <button class="chk tap ${b&&!ex?'on':''}" data-buy="${it.id}" ${ex?'disabled':''} aria-label="Marcar comprado">${b&&!ex?ic.check:''}</button>
-          <span class="label" data-buy2="${ex?'':it.id}">${it.label}</span>
-          ${b&&!ex?'<span class="okpill">ok</span>':''}
-          <button class="icbtn tap ${ex?'exc':''}" data-ex="${it.id}" aria-label="${ex?'Incluir':'Excluir'}">${ex?ic.plus:ic.x}</button>
-          ${cat.custom?`<button class="icbtn tap" data-del="${it.id}" aria-label="Apagar">${ic.trash}</button>`:''}
-        </li>`;
-      }).join("")+"</ul>";
+      if(visible.length){
+        html += '<ul>'+visible.map(function(it){
+          const ex=isEx(it.id), b=isB(it.id);
+          return '<li class="'+(b&&!ex?'bought':'')+'">'
+            +'<button class="chk tap '+(b&&!ex?'on':'')+'" data-buy="'+it.id+'" aria-label="Marcar comprado">'+(b&&!ex?ic.check:'')+'</button>'
+            +'<span class="label" data-buy2="'+it.id+'">'+esc(it.label)+'</span>'
+            +(b&&!ex?'<span class="okpill">ok</span>':'')
+            +'<button class="icbtn tap '+(ex?'exc':'')+'" data-ex="'+it.id+'" aria-label="'+(ex?'Incluir':'Excluir')+'">'+(ex?ic.plus:ic.x)+'</button>'
+            +(it.custom?'<button class="icbtn tap" data-del="'+it.id+'" aria-label="Apagar item">'+ic.trash+'</button>':'')
+            +'</li>';
+        }).join("")+'</ul>';
+      }
+      if(canAdd){
+        html += '<div class="additem"><input class="add-inp" data-addcat="'+cat.key+'" placeholder="Adicionar item…"><button class="add-go tap" data-addgo="'+cat.key+'" aria-label="Adicionar">+</button></div>';
+      }
     }
-    html += "</section>";
+    html += '</section>';
   });
-  if(!html) html = `<div class="empty"><p style="font-size:15px;margin:0">Nada por aqui.</p><p style="font-size:13px;margin-top:6px">Tente outro filtro ou limpe a busca.</p></div>`;
-  html += `<button class="reset tap" id="resetbtn">${ic.reset} Recomeçar do zero</button>`;
+
+  if(!html) html = '<div class="empty"><p style="font-size:15px;margin:0">Nada por aqui.</p><p style="font-size:13px;margin-top:6px">Tente outro filtro ou limpe a busca.</p></div>';
+  html += '<button class="reset tap" id="resetbtn">'+ic.reset+' Recomeçar do zero</button>';
   document.getElementById("list").innerHTML = html;
   document.getElementById("qclear").style.display = query?'block':'none';
   window.scrollTo(0,sc);
 }
 
+/* ---------- modais ---------- */
+function openModal(html){ document.getElementById("modal").innerHTML=html; document.getElementById("overlay").classList.add("on"); }
+function closeModal(){ document.getElementById("overlay").classList.remove("on"); }
+const M = () => document.getElementById("modal");
+
+function emojiGrid(id){ return '<div class="emoji-grid" id="'+id+'">'+EMOJIS.map(function(e){return '<button class="emoji-opt" data-emo="'+e+'">'+e+'</button>';}).join("")+'</div>'; }
+
+function openEmojiPicker(catKey){
+  openModal('<h3>Trocar ícone</h3><p class="lbl">Escolha um:</p>'+emojiGrid("ep")
+    +'<p class="lbl">Ou digite/cole um emoji:</p><input type="text" id="ep-custom" maxlength="6" placeholder="🏠">'
+    +'<div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn" id="ep-save">Usar digitado</button></div>');
+  M().querySelectorAll("#ep .emoji-opt").forEach(function(b){ b.addEventListener("click",function(){ setIcon(catKey,b.dataset.emo); closeModal(); toast("Ícone atualizado"); }); });
+  M().querySelector("#ep-save").addEventListener("click",function(){ const v=M().querySelector("#ep-custom").value.trim(); if(v){ setIcon(catKey,v); closeModal(); toast("Ícone atualizado"); } });
+}
+
+function openNewCat(){
+  openModal('<h3>Nova categoria</h3><p class="lbl">Nome</p><input type="text" id="nc-name" placeholder="Ex.: Bebê, Garagem, Festa…">'
+    +'<p class="lbl">Ícone</p>'+emojiGrid("nc")
+    +'<div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn" id="nc-create">Criar</button></div>');
+  let chosen="📦";
+  M().querySelectorAll("#nc .emoji-opt").forEach(function(b){ b.addEventListener("click",function(){ chosen=b.dataset.emo; M().querySelectorAll("#nc .emoji-opt").forEach(function(x){x.classList.remove("sel");}); b.classList.add("sel"); }); });
+  M().querySelector("#nc-create").addEventListener("click",function(){ const name=M().querySelector("#nc-name").value.trim(); if(!name){ toast("Dê um nome à categoria"); return; } const key="u-"+Date.now().toString(36); userCats.push({key,name,icon:chosen}); added[key]=[]; openCats[key]=true; save(); closeModal(); render(); toast("Categoria criada"); });
+}
+
+function openBackup(){
+  const code = exportCode();
+  openModal('<h3>Backup / Enviar para outro celular</h3>'
+    +'<p class="lbl">Seu código (envie por WhatsApp, e-mail, etc.):</p>'
+    +'<textarea id="bk-out" readonly>'+code+'</textarea>'
+    +'<div class="modal-actions"><button class="btn" id="bk-copy">Copiar código</button><button class="btn ghost" id="bk-share">Compartilhar</button><button class="btn ghost" id="bk-file">Baixar arquivo</button></div>'
+    +'<hr><p class="lbl">Receber de outro celular (cole o código):</p>'
+    +'<textarea id="bk-in" placeholder="cole aqui o código recebido"></textarea>'
+    +'<div class="modal-actions"><button class="btn" id="bk-import">Importar código</button><label class="btn ghost filelabel">Importar arquivo<input type="file" id="bk-fin" accept=".json,.txt" hidden></label></div>'
+    +'<p class="warn">⚠️ Importar substitui os dados deste aparelho.</p>'
+    +'<div class="modal-actions"><button class="btn ghost" data-close>Fechar</button></div>');
+
+  M().querySelector("#bk-copy").addEventListener("click",function(){
+    const t=M().querySelector("#bk-out"); t.select();
+    if(navigator.clipboard){ navigator.clipboard.writeText(code).then(function(){toast("Código copiado");},function(){document.execCommand("copy");toast("Código copiado");}); }
+    else { document.execCommand("copy"); toast("Código copiado"); }
+  });
+  M().querySelector("#bk-share").addEventListener("click",function(){
+    if(navigator.share){ navigator.share({title:"Casa Nova — backup",text:code}).catch(function(){}); }
+    else { const t=M().querySelector("#bk-out"); t.select(); document.execCommand("copy"); toast("Compartilhamento indisponível — código copiado"); }
+  });
+  M().querySelector("#bk-file").addEventListener("click",function(){
+    const blob=new Blob([JSON.stringify(exportObj(),null,2)],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="casa-nova-backup.json"; a.click(); URL.revokeObjectURL(a.href); toast("Arquivo baixado");
+  });
+  M().querySelector("#bk-import").addEventListener("click",function(){
+    if(!confirm("Importar vai substituir os dados deste aparelho. Continuar?")) return;
+    if(importData(M().querySelector("#bk-in").value)){ closeModal(); render(); toast("Dados importados"); } else toast("Código inválido");
+  });
+  M().querySelector("#bk-fin").addEventListener("change",function(e){
+    const f=e.target.files[0]; if(!f) return;
+    if(!confirm("Importar vai substituir os dados deste aparelho. Continuar?")) return;
+    const r=new FileReader(); r.onload=function(){ if(importData(r.result)){ closeModal(); render(); toast("Dados importados"); } else toast("Arquivo inválido"); }; r.readAsText(f);
+  });
+}
+
+/* ---------- toast ---------- */
+let toastT;
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(function(){t.classList.remove("on");},1800); }
+
 /* ---------- eventos ---------- */
-document.addEventListener("click", e=>{
-  const t = e.target.closest("[data-tab],[data-open],[data-buy],[data-buy2],[data-ex],[data-del],#resetbtn");
+document.addEventListener("click", function(e){
+  const t = e.target.closest("[data-tab],[data-open],[data-buy],[data-buy2],[data-ex],[data-del],[data-delcat],[data-icon],[data-addgo],#resetbtn,#newcat,#backup");
   if(!t) return;
-  if(t.dataset.tab){ filter=t.dataset.tab; render(); }
-  else if(t.dataset.open!==undefined && t.dataset.open!==""){ toggleOpen(t.dataset.open); }
-  else if(t.dataset.buy){ toggleBought(t.dataset.buy); }
-  else if(t.dataset.buy2){ toggleBought(t.dataset.buy2); }
-  else if(t.dataset.ex){ toggleEx(t.dataset.ex); }
-  else if(t.dataset.del){ removeCustom(t.dataset.del); }
-  else if(t.id==="resetbtn"){ reset(); }
+  if(t.id==="newcat") return openNewCat();
+  if(t.id==="backup") return openBackup();
+  if(t.id==="resetbtn") return reset();
+  if(t.dataset.tab!==undefined){ filter=t.dataset.tab; return render(); }
+  if(t.dataset.icon!==undefined){ return openEmojiPicker(t.dataset.icon); }
+  if(t.dataset.delcat!==undefined){ if(confirm("Excluir esta categoria e todos os itens dela?")) deleteCategory(t.dataset.delcat); return; }
+  if(t.dataset.open){ return toggleOpen(t.dataset.open); }
+  if(t.dataset.buy!==undefined && t.dataset.buy){ return toggleBought(t.dataset.buy); }
+  if(t.dataset.buy2!==undefined && t.dataset.buy2){ return toggleBought(t.dataset.buy2); }
+  if(t.dataset.ex!==undefined){ return toggleEx(t.dataset.ex); }
+  if(t.dataset.del!==undefined){ return deleteAddedItem(t.dataset.del); }
+  if(t.dataset.addgo!==undefined){
+    const inp=document.querySelector('.add-inp[data-addcat="'+t.dataset.addgo+'"]');
+    if(inp){ addItem(t.dataset.addgo, inp.value); }
+    return;
+  }
 });
-document.getElementById("q").addEventListener("input", e=>{ query=e.target.value; render(); });
-document.getElementById("qclear").addEventListener("click", ()=>{ query=""; document.getElementById("q").value=""; render(); });
-document.getElementById("addbtn").addEventListener("click", addItem);
-document.getElementById("newitem").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem(); });
+document.addEventListener("keydown", function(e){
+  if(e.key==="Enter" && e.target.classList && e.target.classList.contains("add-inp")){
+    addItem(e.target.dataset.addcat, e.target.value);
+  }
+});
+document.getElementById("overlay").addEventListener("click", function(e){ if(e.target.id==="overlay"||e.target.closest("[data-close]")) closeModal(); });
+document.getElementById("q").addEventListener("input", function(e){ query=e.target.value; render(); });
+document.getElementById("qclear").addEventListener("click", function(){ query=""; document.getElementById("q").value=""; render(); });
 
 load(); render();
-if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
+if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
 </script>
 </body>
 </html>
