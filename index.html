@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Casa Nova</title>
+<meta name="theme-color" content="#15604A" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F1EFEA; --card:#FFF; --ink:#211F1C; --sub:#6F6A62; --line:#E7E4DC;
+    --green:#15604A; --greenSoft:#E4EFEA; --amber:#B86A0C; --amberSoft:#FBEEDA;
+    --muted:#ABA59C; --cream:#F6F3EC;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,sans-serif;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  input{font-family:inherit;}
+  .tap:active{transform:scale(.97);}
+  input:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:2px;}
+  ::-webkit-scrollbar{width:0;height:0;}
+  .wrap{max-width:480px;margin:0 auto;padding-bottom:48px;}
+
+  header{background:var(--green);color:var(--cream);
+    padding:max(26px,env(safe-area-inset-top)) 20px 22px;border-radius:0 0 26px 26px;}
+  .eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;opacity:.8;}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:34px;
+    line-height:1;margin:8px 0 16px;}
+  .prow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+  .pct{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;}
+  .bar{height:10px;background:rgba(255,255,255,.18);border-radius:999px;overflow:hidden;}
+  .bar > i{display:block;height:100%;background:var(--cream);border-radius:999px;
+    transition:width .35s ease;}
+  .stats{display:flex;gap:18px;margin-top:14px;font-size:13px;}
+  .stats b{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;}
+  .stats span span{opacity:.8;margin-left:5px;}
+
+  .controls{padding:16px 16px 0;position:sticky;top:0;z-index:5;background:var(--bg);}
+  .search{display:flex;align-items:center;gap:8px;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;padding:10px 12px;}
+  .search input{border:none;outline:none;flex:1;font-size:15px;background:transparent;color:var(--ink);}
+  .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;}
+  .tab{flex:0 0 auto;padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;
+    background:var(--card);color:var(--sub);border:1px solid var(--line);transition:all .12s;}
+  .tab.on{background:var(--green);color:var(--cream);border-color:var(--green);}
+  .tab .n{opacity:.55;margin-left:5px;}
+  .tab.on .n{opacity:.85;}
+
+  .add{padding:8px 16px 4px;display:flex;gap:8px;}
+  .add input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+    font-size:14px;background:var(--card);color:var(--ink);outline:none;}
+  .add button{background:var(--amber);color:#fff;border-radius:10px;padding:0 14px;
+    display:flex;align-items:center;gap:4px;font-weight:600;font-size:14px;}
+
+  main{padding:8px 16px 0;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    margin-bottom:12px;overflow:hidden;}
+  .chead{width:100%;display:flex;align-items:center;gap:12px;padding:14px 16px;text-align:left;}
+  .chead .emoji{font-size:20px;}
+  .chead .title{flex:1;}
+  .chead .title b{display:block;font-weight:600;font-size:15px;line-height:1.2;}
+  .chead .title small{font-size:12px;color:var(--sub);}
+  .chev{transition:transform .2s;color:var(--muted);}
+  .chev.open{transform:rotate(180deg);}
+  ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  li{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--bg);
+    transition:opacity .15s;}
+  li.ex{opacity:.5;}
+  .chk{width:24px;height:24px;flex:0 0 auto;border-radius:7px;border:2px solid var(--muted);
+    background:transparent;display:flex;align-items:center;justify-content:center;}
+  .chk.on{background:var(--green);border-color:var(--green);}
+  .label{flex:1;font-size:14.5px;cursor:pointer;}
+  li.bought .label{text-decoration:line-through;text-decoration-color:var(--green);}
+  li.ex .label{text-decoration:line-through;color:var(--muted);cursor:default;}
+  .okpill{font-size:11px;font-weight:600;color:var(--green);background:var(--greenSoft);
+    padding:3px 8px;border-radius:999px;}
+  .icbtn{width:30px;height:30px;flex:0 0 auto;border-radius:8px;display:flex;
+    align-items:center;justify-content:center;color:var(--muted);}
+  .icbtn.exc{background:var(--amberSoft);color:var(--amber);}
+  .empty{text-align:center;padding:48px 24px;color:var(--sub);}
+  .reset{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;
+    padding:12px;border-radius:12px;color:var(--sub);font-size:13.5px;font-weight:500;
+    border:1px solid var(--line);background:var(--card);}
+  svg{display:block;}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      Lista da mudança
+    </div>
+    <h1>Casa Nova</h1>
+    <div class="prow"><span style="font-size:13px;opacity:.85">Casa montada</span><span class="pct" id="pct">0%</span></div>
+    <div class="bar"><i id="barfill" style="width:0%"></i></div>
+    <div class="stats">
+      <span><b id="s-bought">0</b><span>comprados</span></span>
+      <span><b id="s-missing">0</b><span>faltam</span></span>
+      <span><b id="s-excl">0</b><span>excluídos</span></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="search">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ABA59C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" placeholder="Buscar item…" />
+      <button id="qclear" class="tap" aria-label="Limpar busca" style="display:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ABA59C" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+
+  <div class="add">
+    <input id="newitem" placeholder="Adicionar um item meu…" />
+    <button id="addbtn" class="tap" aria-label="Adicionar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Add
+    </button>
+  </div>
+
+  <main id="list"></main>
+</div>
+
+<script>
+/* ---------- dados ---------- */
+const CATEGORIES = [
+  {icon:"🧴",name:"Produtos de Limpeza",items:["Sabão líquido para roupas","Sabão em pó","Sabão em barra","Amaciante","Alvejante / tira-manchas","Removedor de manchas","Água sanitária","Perfume para roupas","Detergente","Desengordurante","Limpa alumínio","Limpa inox","Saponáceo / sapólio","Esponja de aço (Bombril)","Desinfetante","Limpador de vaso sanitário","Pastilha sanitária","Removedor de limo / mofo","Limpa azulejo / pedra","Limpador multiuso","Limpa vidros","Limpador de piso","Cera para piso","Lustra-móveis","Álcool líquido 70%","Álcool em gel","Cloro","Aromatizante de ambiente","Inseticida","Naftalina / anti-mofo","Limpa estofados / carpete","Removedor geral"]},
+  {icon:"🧹",name:"Utensílios de Limpeza",items:["Vassoura comum","Vassoura de pelo / piaçava","Pá de lixo","Rodo","Mop / esfregão","Balde","Bacia","Esponjas multiuso","Esponja de aço","Pano de chão","Pano multiuso (Perfex)","Pano de prato","Flanela","Escova de mão / escovão","Escova p/ vaso sanitário + suporte","Espanador","Luvas de borracha","Borrifador","Desentupidor","Limpa-teto","Lixeiras","Sacos de lixo","Cesto de roupa suja"]},
+  {icon:"🍳",name:"Cozinha — Panelas e Utensílios",items:["Jogo de panelas","Frigideira antiaderente","Panela de pressão","Leiteira","Caçarola","Assadeiras / formas","Refratários / travessas","Tábua de corte","Jogo de facas","Afiador / chaira","Colheres de pau / silicone","Concha","Escumadeira","Espátula","Pegador","Batedor (fouet)","Ralador","Descascador","Espremedor de alho","Espremedor de frutas","Abridor de latas / garrafas","Saca-rolhas","Peneira","Escorredor de macarrão / arroz","Funil","Rolo de massa","Tesoura de cozinha","Potes herméticos","Potes de mantimentos","Porta-temperos"]},
+  {icon:"🍽️",name:"Cozinha — Mesa e Louças",items:["Jogo de pratos","Jogo de copos","Copos americanos / longos","Taças","Canecas / xícaras + pires","Jogo de talheres","Talheres de servir","Jarra","Saladeira / bowls","Travessas de servir","Jogo americano / toalha de mesa","Guardanapos","Saleiro / açucareiro / manteigueira","Escorredor de louças","Tapete de pia","Dispenser de detergente","Porta-talheres","Lixeira de pia"]},
+  {icon:"🔌",name:"Cozinha — Eletrodomésticos",items:["Geladeira","Micro-ondas","Filtro / purificador de água","Liquidificador","Batedeira","Mixer","Cafeteira","Air fryer","Sanduicheira / grill","Torradeira","Chaleira elétrica","Processador","Garrafa térmica","Forno elétrico"]},
+  {icon:"📦",name:"Cozinha — Descartáveis",items:["Papel toalha","Papel alumínio","Filme plástico","Papel manteiga","Sacos para freezer / zip","Filtro de papel para café","Palitos de dente","Fósforo / isqueiro","Botijão de gás"]},
+  {icon:"🛁",name:"Banheiro — Itens e Acessórios",items:["Toalhas de banho","Toalhas de rosto","Toalha de mão","Tapete de banheiro","Tapete antiderrapante (box)","Cortina de box + ganchos","Suporte de papel higiênico","Dispenser de sabonete líquido","Saboneteira","Porta-escova de dentes","Lixeira com tampa","Cesto organizador","Ganchos adesivos / ventosas","Espelho","Balança"]},
+  {icon:"🧼",name:"Banheiro — Higiene Pessoal",items:["Papel higiênico","Sabonete","Shampoo","Condicionador","Creme de pentear","Sabonete íntimo","Pasta de dente","Escova de dente","Fio dental","Enxaguante bucal","Desodorante","Aparelho / lâmina de barbear","Cotonetes","Algodão","Lenço umedecido","Absorventes","Hidratante corporal","Protetor solar","Bucha / esponja de banho","Pente / escova de cabelo","Secador de cabelo","Cortador / alicate de unha","Tesoura de unha","Pinça"]},
+  {icon:"🛏️",name:"Quarto / Cama",items:["Colchão","Protetor de colchão","Travesseiros","Protetor de travesseiro","Fronhas","Jogos de lençol","Edredom / colcha","Cobertor / manta","Criado-mudo","Abajur / luminária","Cabides","Organizadores de gaveta","Espelho de corpo","Cortina / persiana","Despertador"]},
+  {icon:"🛋️",name:"Sala",items:["Sofá","Mesa de centro","Rack / painel para TV","TV","Tapete","Almofadas","Cortina / persiana","Luminária / abajur","Mesa lateral / aparador","Quadros / decoração","Vaso / plantas","Ventilador ou ar-condicionado","Filtro de linha"]},
+  {icon:"👕",name:"Lavanderia",items:["Varal","Prendedores de roupa","Cabides extras","Ferro de passar","Tábua de passar","Borrifador / passa-roupa","Cesto para roupa","Prateleiras / organizadores","Balde e bacia extras"]},
+  {icon:"🔧",name:"Ferramentas e Manutenção",items:["Kit de ferramentas","Furadeira / parafusadeira","Brocas / pontas","Trena / fita métrica","Nível","Pregos, parafusos e buchas","Fita isolante","Fita crepe e dupla-face","Cola (super bonder, cola branca)","Estilete","Tesoura geral","Lanterna","Pilhas e baterias","Lâmpadas extras","Extensões / réguas","Adaptadores de tomada","Benjamim / T","Escada","Cadeado / chaveiro"]},
+  {icon:"🚨",name:"Segurança",items:["Extintor de incêndio","Detector de fumaça","Kit de primeiros socorros","Velas + fósforo","Lanterna de emergência"]},
+  {icon:"💊",name:"Farmácia",items:["Termômetro","Band-aid / curativos","Gaze","Esparadrapo / micropore","Álcool 70%","Água oxigenada","Antisséptico","Soro fisiológico","Analgésico / antitérmico","Anti-inflamatório","Antialérgico","Antiácido / sal de fruta","Pomada para queimadura","Pomada cicatrizante","Pomada para picadas","Repelente","Soro de reidratação"]},
+  {icon:"🪴",name:"Decoração e Organização",items:["Capacho / tapete de entrada","Relógio de parede","Espelhos decorativos","Quadros","Plantas / vasos","Caixas organizadoras","Ganchos adesivos","Porta-chaves de parede","Suporte de guarda-chuva","Guarda-chuva"]},
+  {icon:"🌳",name:"Área Externa / Quintal",items:["Mangueira de jardim","Esguicho / bico","Vassoura de piaçava","Ferramentas de jardinagem","Cortador de grama / tesoura de poda","Regador","Vasos e terra","Cadeira / mesa externa","Churrasqueira + utensílios"]},
+  {icon:"🐾",name:"Pet",items:["Comedouro / bebedouro","Ração","Caminha / tapete","Caixa e areia higiênica","Tapete higiênico","Brinquedos","Coleira / guia","Petiscos"]},
+  {icon:"💻",name:"Escritório / Home Office",items:["Mesa","Cadeira","Luminária de mesa","Filtro de linha / suporte de cabos","Papelaria","Organizadores / gaveteiro"]},
+];
+const PRE_OWNED = ["Geladeira"];
+const KEY = "casa-nova-v1";
+
+/* ---------- estado ---------- */
+let status = {};   // id -> {ex,b}
+let custom = [];   // {id,label}
+let openCats = {}; // key -> bool
+let filter = "tudo";
+let query = "";
+
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ const o = JSON.parse(raw); status=o.status||{}; custom=o.custom||[]; return; }
+  }catch(e){}
+  CATEGORIES.forEach((c,ci)=>c.items.forEach((it,ii)=>{ if(PRE_OWNED.includes(it)) status[ci+"-"+ii]={b:true}; }));
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify({status,custom})); }catch(e){} }
+
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const isEx = id => !!(status[id]&&status[id].ex);
+const isB  = id => !!(status[id]&&status[id].b);
+
+function allCats(){
+  const base = CATEGORIES.map((c,ci)=>({icon:c.icon,name:c.name,key:"c"+ci,custom:false,
+    items:c.items.map((label,ii)=>({id:ci+"-"+ii,label}))}));
+  if(custom.length) base.push({icon:"📝",name:"Meus itens",key:"custom",custom:true,items:custom});
+  return base;
+}
+function matchItem(it){
+  if(query && !norm(it.label).includes(norm(query))) return false;
+  const ex=isEx(it.id), b=isB(it.id);
+  if(filter==="falta") return !ex && !b;
+  if(filter==="comprados") return !ex && b;
+  if(filter==="excluidos") return ex;
+  return true;
+}
+function stats(){
+  let total=0,excl=0,bought=0;
+  allCats().forEach(c=>c.items.forEach(it=>{ total++; if(isEx(it.id))excl++; else if(isB(it.id))bought++; }));
+  const incl=total-excl;
+  return {total,excl,incl,bought,missing:incl-bought,pct:incl?Math.round(bought/incl*100):0};
+}
+
+/* ---------- ações ---------- */
+function toggleBought(id){ const s=status[id]||{}; status[id]={ex:false,b:!s.b}; save(); render(); }
+function toggleEx(id){ const s=status[id]||{}; status[id]={...s,ex:!s.ex}; save(); render(); }
+function toggleOpen(k){ openCats[k]=!openCats[k]; render(); }
+function addItem(){
+  const v=document.getElementById("newitem").value.trim();
+  if(!v) return;
+  custom.push({id:"x-"+Date.now(),label:v});
+  document.getElementById("newitem").value=""; save(); render();
+}
+function removeCustom(id){ custom=custom.filter(i=>i.id!==id); delete status[id]; save(); render(); }
+function reset(){ if(!confirm("Recomeçar do zero? Isso limpa todas as marcações e itens adicionados.")) return;
+  status={}; custom=[]; openCats={}; save(); render(); }
+
+/* ---------- ícones ---------- */
+const ic = {
+  check:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+  x:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+  plus:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  trash:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+  chev:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+  reset:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
+};
+
+/* ---------- render ---------- */
+function render(){
+  const sc = window.scrollY;
+  const st = stats();
+  document.getElementById("pct").textContent = st.pct+"%";
+  document.getElementById("barfill").style.width = st.pct+"%";
+  document.getElementById("s-bought").textContent = st.bought;
+  document.getElementById("s-missing").textContent = st.missing;
+  document.getElementById("s-excl").textContent = st.excl;
+
+  const tabsData=[["tudo","Tudo",st.total],["falta","Falta comprar",st.missing],["comprados","Comprados",st.bought],["excluidos","Excluídos",st.excl]];
+  document.getElementById("tabs").innerHTML = tabsData.map(([id,l,n])=>
+    `<button class="tab tap ${filter===id?'on':''}" data-tab="${id}">${l}<span class="n">${n}</span></button>`).join("");
+
+  const expandAll = filter!=="tudo" || query.trim()!=="";
+  const cats = allCats();
+  let html="";
+  cats.forEach(cat=>{
+    const visible = cat.items.filter(matchItem);
+    if(!visible.length) return;
+    const inclN = cat.items.filter(i=>!isEx(i.id)).length;
+    const boughtN = cat.items.filter(i=>!isEx(i.id)&&isB(i.id)).length;
+    const open = expandAll || openCats[cat.key];
+    html += `<section><button class="chead tap" data-open="${cat.key}" ${expandAll?'disabled style="cursor:default"':''}>
+      <span class="emoji">${cat.icon}</span>
+      <span class="title"><b>${cat.name}</b><small>${boughtN}/${inclN} comprados${expandAll?` · ${visible.length} aqui`:''}</small></span>
+      ${expandAll?'':`<span class="chev ${open?'open':''}">${ic.chev}</span>`}
+    </button>`;
+    if(open){
+      html += "<ul>"+visible.map(it=>{
+        const ex=isEx(it.id), b=isB(it.id);
+        return `<li class="${ex?'ex':''} ${b&&!ex?'bought':''}">
+          <button class="chk tap ${b&&!ex?'on':''}" data-buy="${it.id}" ${ex?'disabled':''} aria-label="Marcar comprado">${b&&!ex?ic.check:''}</button>
+          <span class="label" data-buy2="${ex?'':it.id}">${it.label}</span>
+          ${b&&!ex?'<span class="okpill">ok</span>':''}
+          <button class="icbtn tap ${ex?'exc':''}" data-ex="${it.id}" aria-label="${ex?'Incluir':'Excluir'}">${ex?ic.plus:ic.x}</button>
+          ${cat.custom?`<button class="icbtn tap" data-del="${it.id}" aria-label="Apagar">${ic.trash}</button>`:''}
+        </li>`;
+      }).join("")+"</ul>";
+    }
+    html += "</section>";
+  });
+  if(!html) html = `<div class="empty"><p style="font-size:15px;margin:0">Nada por aqui.</p><p style="font-size:13px;margin-top:6px">Tente outro filtro ou limpe a busca.</p></div>`;
+  html += `<button class="reset tap" id="resetbtn">${ic.reset} Recomeçar do zero</button>`;
+  document.getElementById("list").innerHTML = html;
+  document.getElementById("qclear").style.display = query?'block':'none';
+  window.scrollTo(0,sc);
+}
+
+/* ---------- eventos ---------- */
+document.addEventListener("click", e=>{
+  const t = e.target.closest("[data-tab],[data-open],[data-buy],[data-buy2],[data-ex],[data-del],#resetbtn");
+  if(!t) return;
+  if(t.dataset.tab){ filter=t.dataset.tab; render(); }
+  else if(t.dataset.open!==undefined && t.dataset.open!==""){ toggleOpen(t.dataset.open); }
+  else if(t.dataset.buy){ toggleBought(t.dataset.buy); }
+  else if(t.dataset.buy2){ toggleBought(t.dataset.buy2); }
+  else if(t.dataset.ex){ toggleEx(t.dataset.ex); }
+  else if(t.dataset.del){ removeCustom(t.dataset.del); }
+  else if(t.id==="resetbtn"){ reset(); }
+});
+document.getElementById("q").addEventListener("input", e=>{ query=e.target.value; render(); });
+document.getElementById("qclear").addEventListener("click", ()=>{ query=""; document.getElementById("q").value=""; render(); });
+document.getElementById("addbtn").addEventListener("click", addItem);
+document.getElementById("newitem").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem(); });
+
+load(); render();
+if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
+</script>
+</body>
+</html>
