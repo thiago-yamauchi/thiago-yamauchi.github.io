@@ -1,4 +1,4 @@
-const CACHE = "casa-nova-v2";
+const CACHE = "casa-nova-v3";
 const ASSETS = [
   "index.html",
   "manifest.webmanifest",

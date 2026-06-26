@@ -14,11 +14,10 @@
   :root{
     --bg:#F1EFEA; --card:#FFF; --ink:#211F1C; --sub:#6F6A62; --line:#E7E4DC;
     --green:#15604A; --greenSoft:#E4EFEA; --amber:#B86A0C; --amberSoft:#FBEEDA;
-    --muted:#ABA59C; --cream:#F6F3EC;
+    --red:#B23A2E; --redSoft:#F8E6E2; --muted:#ABA59C; --cream:#F6F3EC;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-  html,body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:Inter,system-ui,-apple-system,sans-serif;}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;}
   button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
   input,textarea{font-family:inherit;}
   .tap:active{transform:scale(.97);}
@@ -26,43 +25,34 @@
   ::-webkit-scrollbar{width:0;height:0;}
   .wrap{max-width:480px;margin:0 auto;padding-bottom:48px;}
 
-  header{background:var(--green);color:var(--cream);
-    padding:max(26px,env(safe-area-inset-top)) 20px 22px;border-radius:0 0 26px 26px;}
-  .eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;
-    text-transform:uppercase;opacity:.8;}
-  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:34px;
-    line-height:1;margin:8px 0 16px;}
+  header{background:var(--green);color:var(--cream);padding:max(26px,env(safe-area-inset-top)) 20px 22px;border-radius:0 0 26px 26px;}
+  .eyebrow{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:34px;line-height:1;margin:8px 0 16px;}
   .prow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
   .pct{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;}
   .bar{height:10px;background:rgba(255,255,255,.18);border-radius:999px;overflow:hidden;}
-  .bar > i{display:block;height:100%;background:var(--cream);border-radius:999px;
-    transition:width .35s ease;}
+  .bar > i{display:block;height:100%;background:var(--cream);border-radius:999px;transition:width .35s ease;}
   .stats{display:flex;gap:18px;margin-top:14px;font-size:13px;}
   .stats b{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;}
   .stats span span{opacity:.8;margin-left:5px;}
 
   .controls{padding:16px 16px 0;position:sticky;top:0;z-index:5;background:var(--bg);}
-  .search{display:flex;align-items:center;gap:8px;background:var(--card);
-    border:1px solid var(--line);border-radius:12px;padding:10px 12px;}
+  .search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;}
   .search input{border:none;outline:none;flex:1;font-size:15px;background:transparent;color:var(--ink);}
   .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;}
-  .tab{flex:0 0 auto;padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;
-    background:var(--card);color:var(--sub);border:1px solid var(--line);transition:all .12s;}
+  .tab{flex:0 0 auto;padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:600;background:var(--card);color:var(--sub);border:1px solid var(--line);transition:all .12s;}
   .tab.on{background:var(--green);color:var(--cream);border-color:var(--green);}
   .tab .n{opacity:.55;margin-left:5px;}
   .tab.on .n{opacity:.85;}
 
   .actionrow{display:flex;gap:8px;padding:10px 16px 2px;}
-  .actionrow .abtn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
-    padding:11px;border-radius:12px;font-weight:600;font-size:13.5px;border:1px solid var(--line);background:var(--card);color:var(--ink);}
+  .actionrow .abtn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;border-radius:12px;font-weight:600;font-size:13.5px;border:1px solid var(--line);background:var(--card);color:var(--ink);}
   .actionrow .abtn.primary{background:var(--green);color:var(--cream);border-color:var(--green);}
 
   main{padding:8px 16px 0;}
-  section{background:var(--card);border:1px solid var(--line);border-radius:16px;
-    margin-bottom:12px;overflow:hidden;}
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden;}
   .chead{display:flex;align-items:center;gap:10px;padding:12px 14px;}
-  .emoji-btn{font-size:21px;width:40px;height:40px;border-radius:11px;display:flex;
-    align-items:center;justify-content:center;background:var(--bg);flex:0 0 auto;}
+  .emoji-btn{font-size:21px;width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--bg);flex:0 0 auto;}
   .chead-main{flex:1;display:flex;align-items:center;gap:10px;text-align:left;}
   .chead-main .title{flex:1;}
   .chead-main .title b{display:block;font-weight:600;font-size:15px;line-height:1.2;}
@@ -72,39 +62,37 @@
 
   ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
   li{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--bg);}
-  .chk{width:24px;height:24px;flex:0 0 auto;border-radius:7px;border:2px solid var(--muted);
-    background:transparent;display:flex;align-items:center;justify-content:center;}
+  .chk{width:24px;height:24px;flex:0 0 auto;border-radius:7px;border:2px solid var(--muted);background:transparent;display:flex;align-items:center;justify-content:center;}
   .chk.on{background:var(--green);border-color:var(--green);}
   .label{flex:1;font-size:14.5px;cursor:pointer;}
   li.bought .label{text-decoration:line-through;text-decoration-color:var(--green);}
-  .okpill{font-size:11px;font-weight:600;color:var(--green);background:var(--greenSoft);
-    padding:3px 8px;border-radius:999px;}
-  .icbtn{width:30px;height:30px;flex:0 0 auto;border-radius:8px;display:flex;
-    align-items:center;justify-content:center;color:var(--muted);}
-  .icbtn.exc{background:var(--amberSoft);color:var(--amber);}
+  .okpill{font-size:11px;font-weight:600;color:var(--green);background:var(--greenSoft);padding:3px 8px;border-radius:999px;}
+  .icbtn{width:30px;height:30px;flex:0 0 auto;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
 
   .additem{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--bg);background:var(--cream);}
-  .additem input{flex:1;border:1px solid var(--line);border-radius:9px;padding:8px 10px;
-    font-size:13.5px;background:#fff;color:var(--ink);outline:none;}
-  .additem .add-go{background:var(--amber);color:#fff;border-radius:9px;width:40px;
-    font-size:22px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+  .additem input{flex:1;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font-size:13.5px;background:#fff;color:var(--ink);outline:none;}
+  .additem .add-go{background:var(--amber);color:#fff;border-radius:9px;width:40px;font-size:22px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+
+  /* lixeira */
+  .trash-title{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--sub);margin:10px 4px 8px;}
+  .trash-row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--bg);}
+  .trash-row:first-child{border-top:none;}
+  .emoji-static{font-size:20px;width:30px;text-align:center;flex:0 0 auto;}
+  .trash-name{flex:1;font-size:14px;}
+  .trash-name small{color:var(--sub);display:block;font-size:11.5px;}
+  .mini{font-size:12.5px;font-weight:600;padding:8px 11px;border-radius:9px;background:var(--greenSoft);color:var(--green);white-space:nowrap;}
+  .mini.danger{background:var(--redSoft);color:var(--red);}
 
   .empty{text-align:center;padding:48px 24px;color:var(--sub);}
-  .reset{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;
-    padding:12px;border-radius:12px;color:var(--sub);font-size:13.5px;font-weight:500;
-    border:1px solid var(--line);background:var(--card);}
+  .reset{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;padding:12px;border-radius:12px;color:var(--sub);font-size:13.5px;font-weight:500;border:1px solid var(--line);background:var(--card);}
   svg{display:block;}
 
-  /* modal */
-  .overlay{position:fixed;inset:0;background:rgba(20,18,16,.45);display:none;
-    align-items:flex-end;justify-content:center;z-index:50;}
+  .overlay{position:fixed;inset:0;background:rgba(20,18,16,.45);display:none;align-items:flex-end;justify-content:center;z-index:50;}
   .overlay.on{display:flex;}
-  .modal{background:var(--card);width:100%;max-width:480px;border-radius:20px 20px 0 0;
-    padding:20px 18px max(20px,env(safe-area-inset-bottom));max-height:88vh;overflow:auto;}
+  .modal{background:var(--card);width:100%;max-width:480px;border-radius:20px 20px 0 0;padding:20px 18px max(20px,env(safe-area-inset-bottom));max-height:88vh;overflow:auto;}
   .modal h3{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;margin:0 0 4px;}
   .modal .lbl{font-size:12.5px;color:var(--sub);margin:14px 0 6px;font-weight:600;}
-  .modal input[type=text],.modal textarea{width:100%;border:1px solid var(--line);border-radius:10px;
-    padding:10px 12px;font-size:14px;background:var(--bg);color:var(--ink);outline:none;}
+  .modal input[type=text],.modal textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;background:var(--bg);color:var(--ink);outline:none;}
   .modal textarea{min-height:64px;resize:vertical;font-family:ui-monospace,monospace;font-size:11px;word-break:break-all;}
   .emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:4px 0;}
   .emoji-opt{font-size:21px;padding:7px 0;border-radius:10px;background:var(--bg);}
@@ -116,9 +104,7 @@
   .modal hr{border:none;border-top:1px solid var(--line);margin:18px 0;}
   .warn{font-size:12px;color:var(--amber);margin-top:10px;}
 
-  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(10px);
-    background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;
-    z-index:60;opacity:0;transition:all .2s;pointer-events:none;max-width:90%;text-align:center;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;z-index:60;opacity:0;transition:all .2s;pointer-events:none;max-width:90%;text-align:center;}
   .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
@@ -136,7 +122,7 @@
     <div class="stats">
       <span><b id="s-bought">0</b><span>comprados</span></span>
       <span><b id="s-missing">0</b><span>faltam</span></span>
-      <span><b id="s-excl">0</b><span>excluídos</span></span>
+      <span><b id="s-excl">0</b><span>na lixeira</span></span>
     </div>
   </header>
 
@@ -167,275 +153,345 @@
 <div class="toast" id="toast"></div>
 
 <script>
-/* ---------- catálogo base ---------- */
+/* ===================== CATÁLOGO BASE (revisado, mais rico e sem redundâncias) ===================== */
 const CATEGORIES = [
-  {icon:"🧴",name:"Produtos de Limpeza",items:["Sabão líquido para roupas","Sabão em pó","Sabão em barra","Amaciante","Alvejante / tira-manchas","Removedor de manchas","Água sanitária","Perfume para roupas","Detergente","Desengordurante","Limpa alumínio","Limpa inox","Saponáceo / sapólio","Esponja de aço (Bombril)","Desinfetante","Limpador de vaso sanitário","Pastilha sanitária","Removedor de limo / mofo","Limpa azulejo / pedra","Limpador multiuso","Limpa vidros","Limpador de piso","Cera para piso","Lustra-móveis","Álcool líquido 70%","Álcool em gel","Cloro","Aromatizante de ambiente","Inseticida","Naftalina / anti-mofo","Limpa estofados / carpete","Removedor geral"]},
-  {icon:"🧹",name:"Utensílios de Limpeza",items:["Vassoura comum","Vassoura de pelo / piaçava","Pá de lixo","Rodo","Mop / esfregão","Balde","Bacia","Esponjas multiuso","Esponja de aço","Pano de chão","Pano multiuso (Perfex)","Pano de prato","Flanela","Escova de mão / escovão","Escova p/ vaso sanitário + suporte","Espanador","Luvas de borracha","Borrifador","Desentupidor","Limpa-teto","Lixeiras","Sacos de lixo","Cesto de roupa suja"]},
-  {icon:"🍳",name:"Cozinha — Panelas e Utensílios",items:["Jogo de panelas","Frigideira antiaderente","Panela de pressão","Leiteira","Caçarola","Assadeiras / formas","Refratários / travessas","Tábua de corte","Jogo de facas","Afiador / chaira","Colheres de pau / silicone","Concha","Escumadeira","Espátula","Pegador","Batedor (fouet)","Ralador","Descascador","Espremedor de alho","Espremedor de frutas","Abridor de latas / garrafas","Saca-rolhas","Peneira","Escorredor de macarrão / arroz","Funil","Rolo de massa","Tesoura de cozinha","Potes herméticos","Potes de mantimentos","Porta-temperos"]},
-  {icon:"🍽️",name:"Cozinha — Mesa e Louças",items:["Jogo de pratos","Jogo de copos","Copos americanos / longos","Taças","Canecas / xícaras + pires","Jogo de talheres","Talheres de servir","Jarra","Saladeira / bowls","Travessas de servir","Jogo americano / toalha de mesa","Guardanapos","Saleiro / açucareiro / manteigueira","Escorredor de louças","Tapete de pia","Dispenser de detergente","Porta-talheres","Lixeira de pia"]},
-  {icon:"🔌",name:"Cozinha — Eletrodomésticos",items:["Geladeira","Micro-ondas","Filtro / purificador de água","Liquidificador","Batedeira","Mixer","Cafeteira","Air fryer","Sanduicheira / grill","Torradeira","Chaleira elétrica","Processador","Garrafa térmica","Forno elétrico"]},
-  {icon:"📦",name:"Cozinha — Descartáveis",items:["Papel toalha","Papel alumínio","Filme plástico","Papel manteiga","Sacos para freezer / zip","Filtro de papel para café","Palitos de dente","Fósforo / isqueiro","Botijão de gás"]},
-  {icon:"🛁",name:"Banheiro — Itens e Acessórios",items:["Toalhas de banho","Toalhas de rosto","Toalha de mão","Tapete de banheiro","Tapete antiderrapante (box)","Cortina de box + ganchos","Suporte de papel higiênico","Dispenser de sabonete líquido","Saboneteira","Porta-escova de dentes","Lixeira com tampa","Cesto organizador","Ganchos adesivos / ventosas","Espelho","Balança"]},
-  {icon:"🧼",name:"Banheiro — Higiene Pessoal",items:["Papel higiênico","Sabonete","Shampoo","Condicionador","Creme de pentear","Sabonete íntimo","Pasta de dente","Escova de dente","Fio dental","Enxaguante bucal","Desodorante","Aparelho / lâmina de barbear","Cotonetes","Algodão","Lenço umedecido","Absorventes","Hidratante corporal","Protetor solar","Bucha / esponja de banho","Pente / escova de cabelo","Secador de cabelo","Cortador / alicate de unha","Tesoura de unha","Pinça"]},
-  {icon:"🛏️",name:"Quarto / Cama",items:["Colchão","Protetor de colchão","Travesseiros","Protetor de travesseiro","Fronhas","Jogos de lençol","Edredom / colcha","Cobertor / manta","Criado-mudo","Abajur / luminária","Cabides","Organizadores de gaveta","Espelho de corpo","Cortina / persiana","Despertador"]},
-  {icon:"🛋️",name:"Sala",items:["Sofá","Mesa de centro","Rack / painel para TV","TV","Tapete","Almofadas","Cortina / persiana","Luminária / abajur","Mesa lateral / aparador","Quadros / decoração","Vaso / plantas","Ventilador ou ar-condicionado","Filtro de linha"]},
-  {icon:"👕",name:"Lavanderia",items:["Varal","Prendedores de roupa","Cabides extras","Ferro de passar","Tábua de passar","Borrifador / passa-roupa","Cesto para roupa","Prateleiras / organizadores","Balde e bacia extras"]},
-  {icon:"🔧",name:"Ferramentas e Manutenção",items:["Kit de ferramentas","Furadeira / parafusadeira","Brocas / pontas","Trena / fita métrica","Nível","Pregos, parafusos e buchas","Fita isolante","Fita crepe e dupla-face","Cola (super bonder, cola branca)","Estilete","Tesoura geral","Lanterna","Pilhas e baterias","Lâmpadas extras","Extensões / réguas","Adaptadores de tomada","Benjamim / T","Escada","Cadeado / chaveiro"]},
-  {icon:"🚨",name:"Segurança",items:["Extintor de incêndio","Detector de fumaça","Kit de primeiros socorros","Velas + fósforo","Lanterna de emergência"]},
-  {icon:"💊",name:"Farmácia",items:["Termômetro","Band-aid / curativos","Gaze","Esparadrapo / micropore","Álcool 70%","Água oxigenada","Antisséptico","Soro fisiológico","Analgésico / antitérmico","Anti-inflamatório","Antialérgico","Antiácido / sal de fruta","Pomada para queimadura","Pomada cicatrizante","Pomada para picadas","Repelente","Soro de reidratação"]},
-  {icon:"🪴",name:"Decoração e Organização",items:["Capacho / tapete de entrada","Relógio de parede","Espelhos decorativos","Quadros","Plantas / vasos","Caixas organizadoras","Ganchos adesivos","Porta-chaves de parede","Suporte de guarda-chuva","Guarda-chuva"]},
-  {icon:"🌳",name:"Área Externa / Quintal",items:["Mangueira de jardim","Esguicho / bico","Vassoura de piaçava","Ferramentas de jardinagem","Cortador de grama / tesoura de poda","Regador","Vasos e terra","Cadeira / mesa externa","Churrasqueira + utensílios"]},
-  {icon:"🐾",name:"Pet",items:["Comedouro / bebedouro","Ração","Caminha / tapete","Caixa e areia higiênica","Tapete higiênico","Brinquedos","Coleira / guia","Petiscos"]},
-  {icon:"💻",name:"Escritório / Home Office",items:["Mesa","Cadeira","Luminária de mesa","Filtro de linha / suporte de cabos","Papelaria","Organizadores / gaveteiro"]},
+  {icon:"🧴",name:"Produtos de Limpeza",items:["Detergente neutro","Detergente concentrado / desengordurante","Sabão líquido para roupas","Sabão em pó","Sabão de coco em barra","Amaciante de roupas","Alvejante com cloro","Alvejante sem cloro (coloridas)","Tira-manchas para roupas","Água sanitária","Desinfetante (pinho/lavanda)","Limpador multiuso","Limpa-vidros","Limpador de piso concentrado","Cera líquida para piso","Lustra-móveis","Limpa-inox","Limpa-alumínio","Saponáceo cremoso","Removedor de limo e mofo","Limpador de box e azulejo","Limpador para vaso sanitário","Bloco/pastilha sanitária","Limpa-estofados e carpete","Álcool de limpeza 70%","Álcool em gel","Aromatizante de ambiente (spray)","Difusor de varetas","Inseticida aerossol","Sachê antiumidade (anti-mofo)","Repelente de traças (naftalina)"]},
+  {icon:"🧹",name:"Utensílios de Limpeza",items:["Vassoura comum (interna)","Vassoura de pelo macio","Pá de lixo com cabo","Rodo de piso","Rodo pequeno para vidros","Mop / esfregão com balde espremedor","Balde","Bacia","Esponja multiuso (dupla face)","Esponja de aço (Bombril)","Pano de chão (saco alvejado)","Pano multiuso (tipo Perfex)","Flanela para móveis","Escova de mão para esfregar","Escova de vaso sanitário + suporte","Espanador / pega-pó","Luvas de borracha","Borrifador (água/produto)","Desentupidor de pia","Desentupidor de vaso","Escova para teto e cantos","Sacos de lixo (vários tamanhos)"]},
+  {icon:"🍳",name:"Cozinha — Panelas e Preparo",items:["Jogo de panelas","Frigideira antiaderente","Frigideira/grelha de ferro","Panela de pressão","Leiteira","Caçarola grande","Assadeira retangular","Forma de bolo","Forma de pizza","Refratário com tampa","Tábua de corte (carnes)","Tábua de corte (legumes/frutas)","Jogo de facas","Faca de pão","Chaira / afiador","Colher de pau","Espátula de silicone","Concha","Escumadeira","Pegador de massa/salada","Batedor de arame (fouet)","Ralador","Descascador de legumes","Espremedor de alho","Espremedor de frutas (manual)","Abridor de latas","Saca-rolhas / abridor de garrafas","Peneira","Escorredor de macarrão","Funil","Rolo de massa","Tesoura de cozinha","Potes herméticos (sobras)","Potes de mantimentos (arroz, feijão, café)","Porta-temperos","Lixeira de pia (orgânicos)"]},
+  {icon:"🍽️",name:"Cozinha — Mesa e Louças",items:["Pratos rasos","Pratos fundos","Pratos de sobremesa","Jogo de copos","Copos americanos","Taças de vinho","Taças de água/suco","Canecas","Xícaras de café + pires","Jogo de talheres","Talheres de servir","Jarra para água/suco","Saladeira / bowls","Travessas de servir","Jogo americano","Toalha de mesa","Guardanapos de tecido","Saleiro e pimenteiro","Açucareiro","Manteigueira","Escorredor de louças","Tapete absorvente de pia","Dispenser de detergente + esponja","Porta-talheres de gaveta"]},
+  {icon:"🔌",name:"Cozinha — Eletrodomésticos",items:["Geladeira","Micro-ondas","Purificador / filtro de água","Liquidificador","Batedeira","Mixer de mão","Cafeteira","Air fryer","Sanduicheira / grill","Torradeira","Chaleira elétrica","Processador de alimentos","Garrafa térmica","Forno elétrico (se necessário)","Balança de cozinha"]},
+  {icon:"📦",name:"Cozinha — Descartáveis e Consumíveis",items:["Papel toalha","Papel alumínio","Filme plástico (PVC)","Papel manteiga","Sacos para freezer / zip","Sacos para lixo de pia","Filtro de papel para café","Palitos de dente","Fósforos / acendedor de fogão","Guardanapos de papel","Botijão de gás (ou recarga)"]},
+  {icon:"🛁",name:"Banheiro — Acessórios",items:["Toalhas de banho","Toalhas de rosto","Toalha de lavabo","Tapete de banheiro","Tapete antiderrapante (box)","Cortina de box + ganchos","Suporte de papel higiênico","Dispenser de sabonete líquido","Saboneteira","Porta-escovas de dente","Lixeira de banheiro com tampa","Cesto organizador de banheiro","Ganchos adesivos / ventosas","Espelho de banheiro","Balança de banheiro","Nicho / suporte de box"]},
+  {icon:"🧼",name:"Banheiro — Higiene Pessoal",items:["Papel higiênico","Sabonete em barra","Sabonete líquido","Shampoo","Condicionador","Creme de pentear / leave-in","Sabonete íntimo","Creme dental","Escova de dente","Fio dental","Enxaguante bucal","Desodorante","Aparelho de barbear + lâminas","Espuma/gel de barbear","Cotonetes","Algodão","Lenço umedecido","Absorventes","Hidratante corporal","Protetor solar","Bucha / esponja de banho","Pente","Escova de cabelo","Secador de cabelo","Cortador de unha","Tesoura de unha","Pinça"]},
+  {icon:"🛏️",name:"Quarto / Cama",items:["Colchão","Protetor de colchão","Travesseiros","Protetores de travesseiro","Fronhas","Jogo de lençol com elástico","Lençol de cima (virol)","Edredom","Colcha / cobre-leito","Cobertor / manta","Criado-mudo","Abajur de cabeceira","Cabides (guarda-roupa)","Organizadores de gaveta (colmeia)","Caixa para guardar enxoval","Espelho de corpo inteiro","Cortina blackout (quarto)","Despertador"]},
+  {icon:"🛋️",name:"Sala",items:["Sofá","Mesa de centro","Mesa lateral / aparador","Rack / painel para TV","TV","Tapete da sala","Almofadas decorativas","Cortina / persiana (sala)","Luminária de chão / abajur (sala)","Ventilador ou ar-condicionado","Filtro de linha (TV/sala)","Controle universal + pilhas"]},
+  {icon:"👕",name:"Lavanderia / Área de Serviço",items:["Varal (chão ou suspenso)","Prendedores de roupa","Cabides para secar roupa","Ferro de passar","Tábua de passar","Borrifador de passar (engomar)","Cesto de roupa suja","Cesto para roupa seca/limpa","Prateleira / organizador da área","Escova de tanque","Dispenser de sabão de tanque"]},
+  {icon:"🔧",name:"Ferramentas e Manutenção",items:["Kit de ferramentas (chaves, alicate, martelo)","Furadeira / parafusadeira","Brocas e pontas (kit)","Trena / fita métrica","Nível de bolha","Sortido de pregos, parafusos e buchas","Fita isolante","Fita crepe","Fita dupla-face","Cola instantânea (super bonder)","Cola branca / de madeira","Estilete","Tesoura geral","Lanterna de mão","Pilhas e baterias (AA/AAA)","Lâmpadas extras","Extensão / régua de tomadas","Adaptadores de tomada (novo/antigo)","Benjamim / T","Escada doméstica","Cadeado","Organizador de chaves de parede"]},
+  {icon:"🚨",name:"Segurança",items:["Extintor de incêndio","Detector de fumaça","Velas + caixa de fósforos (emergência)","Lanterna de emergência (recarregável)","Estabilizador / nobreak","Cofre pequeno para documentos"]},
+  {icon:"💊",name:"Farmácia / Primeiros Socorros",items:["Caixa de primeiros socorros","Termômetro","Curativos (band-aid)","Gaze","Esparadrapo / micropore","Álcool 70% (antisséptico)","Água oxigenada","Antisséptico tópico","Soro fisiológico","Analgésico / antitérmico","Anti-inflamatório","Antialérgico","Antiácido / sal de fruta","Pomada para queimaduras","Pomada cicatrizante","Pomada para picadas/coceira","Repelente de insetos","Soro de reidratação oral"]},
+  {icon:"🪴",name:"Decoração e Organização",items:["Capacho / tapete de entrada","Relógio de parede","Quadros / molduras","Espelhos decorativos","Plantas decorativas + vasos (interno)","Vela decorativa/aromática","Caixas organizadoras","Cestos decorativos","Cabideiro / gancho de parede","Porta-guarda-chuva","Guarda-chuva"]},
+  {icon:"🌳",name:"Área Externa / Quintal",items:["Mangueira de jardim","Esguicho / bico para mangueira","Vassoura de piaçava (quintal)","Pá e ferramentas de jardinagem","Tesoura de poda","Cortador de grama (se houver gramado)","Regador","Vasos e terra para jardim","Cadeiras de área externa","Mesa de área externa","Churrasqueira + grelha","Carvão e acendedor"]},
+  {icon:"🐾",name:"Pet",items:["Comedouro","Bebedouro / fonte","Ração","Petiscos","Caminha / tapete do pet","Caixa de areia (gato)","Areia higiênica (gato)","Tapete higiênico (cão)","Brinquedos","Coleira e guia","Produtos de banho do pet"]},
+  {icon:"💻",name:"Escritório / Home Office",items:["Mesa de trabalho","Cadeira de escritório","Luminária de mesa","Filtro de linha (mesa/PC)","Organizador de cabos","Material de papelaria (canetas, papel)","Organizador de mesa / gaveteiro","Lixeira pequena (escritório)"]},
 ];
 const PRE_OWNED = ["Geladeira"];
 const EMOJIS = ["🧴","🧹","🧽","🧼","🪣","🧺","🚿","🛁","🚽","🪥","🧻","🍳","🍽️","🥘","🔪","🥄","☕","🫖","🧊","🔌","🔋","💡","📦","🛏️","🛋️","🪑","🚪","🪟","🪞","🛒","🧯","🩹","💊","🌿","🪴","🌳","🐾","💻","📚","🔧","🔨","🪛","🧰","🕯️","🔦","📝","🔑","🗑️","🪠","🌡️","⭐","❤️","🏠","🧦","👕","🪒","🎁","🧸","🍼","🧷","🚗","🎨","🎮","🧩"];
-const KEY = "casa-nova-v2";
 
-/* ---------- estado ---------- */
-let status = {};          // id -> {ex,b}
-let added = {};           // catKey -> [{id,label}]
-let userCats = [];        // [{key,name,icon}]
-let iconOverrides = {};   // builtinKey -> emoji
-let openCats = {};
-let filter = "tudo";
-let query = "";
+/* catálogo da versão anterior (v2) — usado só para preservar marcações antigas */
+const LEGACY_NAMES=["Produtos de Limpeza","Utensílios de Limpeza","Cozinha — Panelas e Utensílios","Cozinha — Mesa e Louças","Cozinha — Eletrodomésticos","Cozinha — Descartáveis","Banheiro — Itens e Acessórios","Banheiro — Higiene Pessoal","Quarto / Cama","Sala","Lavanderia","Ferramentas e Manutenção","Segurança","Farmácia","Decoração e Organização","Área Externa / Quintal","Pet","Escritório / Home Office"];
+const LEGACY_ITEMS=[
+["Sabão líquido para roupas","Sabão em pó","Sabão em barra","Amaciante","Alvejante / tira-manchas","Removedor de manchas","Água sanitária","Perfume para roupas","Detergente","Desengordurante","Limpa alumínio","Limpa inox","Saponáceo / sapólio","Esponja de aço (Bombril)","Desinfetante","Limpador de vaso sanitário","Pastilha sanitária","Removedor de limo / mofo","Limpa azulejo / pedra","Limpador multiuso","Limpa vidros","Limpador de piso","Cera para piso","Lustra-móveis","Álcool líquido 70%","Álcool em gel","Cloro","Aromatizante de ambiente","Inseticida","Naftalina / anti-mofo","Limpa estofados / carpete","Removedor geral"],
+["Vassoura comum","Vassoura de pelo / piaçava","Pá de lixo","Rodo","Mop / esfregão","Balde","Bacia","Esponjas multiuso","Esponja de aço","Pano de chão","Pano multiuso (Perfex)","Pano de prato","Flanela","Escova de mão / escovão","Escova p/ vaso sanitário + suporte","Espanador","Luvas de borracha","Borrifador","Desentupidor","Limpa-teto","Lixeiras","Sacos de lixo","Cesto de roupa suja"],
+["Jogo de panelas","Frigideira antiaderente","Panela de pressão","Leiteira","Caçarola","Assadeiras / formas","Refratários / travessas","Tábua de corte","Jogo de facas","Afiador / chaira","Colheres de pau / silicone","Concha","Escumadeira","Espátula","Pegador","Batedor (fouet)","Ralador","Descascador","Espremedor de alho","Espremedor de frutas","Abridor de latas / garrafas","Saca-rolhas","Peneira","Escorredor de macarrão / arroz","Funil","Rolo de massa","Tesoura de cozinha","Potes herméticos","Potes de mantimentos","Porta-temperos"],
+["Jogo de pratos","Jogo de copos","Copos americanos / longos","Taças","Canecas / xícaras + pires","Jogo de talheres","Talheres de servir","Jarra","Saladeira / bowls","Travessas de servir","Jogo americano / toalha de mesa","Guardanapos","Saleiro / açucareiro / manteigueira","Escorredor de louças","Tapete de pia","Dispenser de detergente","Porta-talheres","Lixeira de pia"],
+["Geladeira","Micro-ondas","Filtro / purificador de água","Liquidificador","Batedeira","Mixer","Cafeteira","Air fryer","Sanduicheira / grill","Torradeira","Chaleira elétrica","Processador","Garrafa térmica","Forno elétrico"],
+["Papel toalha","Papel alumínio","Filme plástico","Papel manteiga","Sacos para freezer / zip","Filtro de papel para café","Palitos de dente","Fósforo / isqueiro","Botijão de gás"],
+["Toalhas de banho","Toalhas de rosto","Toalha de mão","Tapete de banheiro","Tapete antiderrapante (box)","Cortina de box + ganchos","Suporte de papel higiênico","Dispenser de sabonete líquido","Saboneteira","Porta-escova de dentes","Lixeira com tampa","Cesto organizador","Ganchos adesivos / ventosas","Espelho","Balança"],
+["Papel higiênico","Sabonete","Shampoo","Condicionador","Creme de pentear","Sabonete íntimo","Pasta de dente","Escova de dente","Fio dental","Enxaguante bucal","Desodorante","Aparelho / lâmina de barbear","Cotonetes","Algodão","Lenço umedecido","Absorventes","Hidratante corporal","Protetor solar","Bucha / esponja de banho","Pente / escova de cabelo","Secador de cabelo","Cortador / alicate de unha","Tesoura de unha","Pinça"],
+["Colchão","Protetor de colchão","Travesseiros","Protetor de travesseiro","Fronhas","Jogos de lençol","Edredom / colcha","Cobertor / manta","Criado-mudo","Abajur / luminária","Cabides","Organizadores de gaveta","Espelho de corpo","Cortina / persiana","Despertador"],
+["Sofá","Mesa de centro","Rack / painel para TV","TV","Tapete","Almofadas","Cortina / persiana","Luminária / abajur","Mesa lateral / aparador","Quadros / decoração","Vaso / plantas","Ventilador ou ar-condicionado","Filtro de linha"],
+["Varal","Prendedores de roupa","Cabides extras","Ferro de passar","Tábua de passar","Borrifador / passa-roupa","Cesto para roupa","Prateleiras / organizadores","Balde e bacia extras"],
+["Kit de ferramentas","Furadeira / parafusadeira","Brocas / pontas","Trena / fita métrica","Nível","Pregos, parafusos e buchas","Fita isolante","Fita crepe e dupla-face","Cola (super bonder, cola branca)","Estilete","Tesoura geral","Lanterna","Pilhas e baterias","Lâmpadas extras","Extensões / réguas","Adaptadores de tomada","Benjamim / T","Escada","Cadeado / chaveiro"],
+["Extintor de incêndio","Detector de fumaça","Kit de primeiros socorros","Velas + fósforo","Lanterna de emergência"],
+["Termômetro","Band-aid / curativos","Gaze","Esparadrapo / micropore","Álcool 70%","Água oxigenada","Antisséptico","Soro fisiológico","Analgésico / antitérmico","Anti-inflamatório","Antialérgico","Antiácido / sal de fruta","Pomada para queimadura","Pomada cicatrizante","Pomada para picadas","Repelente","Soro de reidratação"],
+["Capacho / tapete de entrada","Relógio de parede","Espelhos decorativos","Quadros","Plantas / vasos","Caixas organizadoras","Ganchos adesivos","Porta-chaves de parede","Suporte de guarda-chuva","Guarda-chuva"],
+["Mangueira de jardim","Esguicho / bico","Vassoura de piaçava","Ferramentas de jardinagem","Cortador de grama / tesoura de poda","Regador","Vasos e terra","Cadeira / mesa externa","Churrasqueira + utensílios"],
+["Comedouro / bebedouro","Ração","Caminha / tapete","Caixa e areia higiênica","Tapete higiênico","Brinquedos","Coleira / guia","Petiscos"],
+["Mesa","Cadeira","Luminária de mesa","Filtro de linha / suporte de cabos","Papelaria","Organizadores / gaveteiro"]
+];
+
+const KEY = "casa-nova-v3";
+
+/* ===================== ids estáveis ===================== */
+function djb2(s){ let h=5381; for(let i=0;i<s.length;i++){ h=((h<<5)+h+s.charCodeAt(i))|0; } return (h>>>0).toString(36); }
+const ckey = name => "c"+djb2(name);
+const bid  = (catName,label) => "b"+djb2(catName+"|"+label);
+
+/* ===================== estado ===================== */
+let bought={}, trashItems={}, trashCats={}, purgedItems={}, purgedCats={}, added={}, userCats=[], iconOverrides={};
+let openCats={}, filter="tudo", query="";
+
+const isB=id=>!!bought[id];
+const inTrash=id=>!!trashItems[id];
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const newId = () => "i-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6);
+
+function blankState(){ bought={};trashItems={};trashCats={};purgedItems={};purgedCats={};added={};userCats=[];iconOverrides={}; }
+
+function migrateFromV2(o){
+  blankState();
+  userCats=o.userCats||[];
+  // added: remapeia chaves built-in antigas "c{idx}" -> ckey(nome antigo)
+  const oa=o.added||{};
+  Object.keys(oa).forEach(function(k){
+    let nk=k; const m=k.match(/^c(\d+)$/);
+    if(m && LEGACY_NAMES[+m[1]]) nk=ckey(LEGACY_NAMES[+m[1]]);
+    added[nk]=(added[nk]||[]).concat(oa[k]||[]);
+  });
+  // ícones: "c{idx}" -> ckey(nome antigo)
+  const oi=o.iconOverrides||{};
+  Object.keys(oi).forEach(function(k){
+    const m=k.match(/^c(\d+)$/);
+    if(m && LEGACY_NAMES[+m[1]]) iconOverrides[ckey(LEGACY_NAMES[+m[1]])]=oi[k];
+    else iconOverrides[k]=oi[k];
+  });
+  // status -> bought/trash, casando por rótulo idêntico
+  const newIdByLabel={};
+  CATEGORIES.forEach(function(c){ c.items.forEach(function(l){ newIdByLabel[l]=bid(c.name,l); }); });
+  const st=o.status||{};
+  Object.keys(st).forEach(function(id){
+    const s=st[id]||{}; const mm=id.match(/^(\d+)-(\d+)$/);
+    if(mm){
+      const lbl=(LEGACY_ITEMS[+mm[1]]||[])[+mm[2]];
+      const nid=lbl?newIdByLabel[lbl]:null;
+      if(nid){ if(s.b) bought[nid]=true; if(s.ex) trashItems[nid]=true; }
+    } else { if(s.b) bought[id]=true; if(s.ex) trashItems[id]=true; } // itens manuais
+  });
+}
 
 function load(){
   try{
-    const v2 = localStorage.getItem(KEY);
-    if(v2){ const o=JSON.parse(v2); status=o.status||{}; added=o.added||{}; userCats=o.userCats||[]; iconOverrides=o.iconOverrides||{}; return; }
-    const v1 = localStorage.getItem("casa-nova-v1");
-    if(v1){
-      const o=JSON.parse(v1); status=o.status||{};
-      if(o.custom && o.custom.length){ const k="u-legacy"; userCats=[{key:k,name:"Meus itens",icon:"📝"}]; added[k]=o.custom.map(c=>({id:c.id,label:c.label})); }
-      save(); return;
-    }
+    const v3=localStorage.getItem(KEY);
+    if(v3){ const o=JSON.parse(v3);
+      bought=o.bought||{};trashItems=o.trashItems||{};trashCats=o.trashCats||{};purgedItems=o.purgedItems||{};purgedCats=o.purgedCats||{};added=o.added||{};userCats=o.userCats||[];iconOverrides=o.iconOverrides||{};
+      return; }
+    const v2=localStorage.getItem("casa-nova-v2");
+    if(v2){ migrateFromV2(JSON.parse(v2)); save(); return; }
+    const v1=localStorage.getItem("casa-nova-v1");
+    if(v1){ const o=JSON.parse(v1); const conv={status:o.status||{},added:{},userCats:[],iconOverrides:{}};
+      if(o.custom&&o.custom.length){ conv.userCats=[{key:"u-legacy",name:"Meus itens",icon:"📝"}]; conv.added["u-legacy"]=o.custom.map(c=>({id:c.id,label:c.label})); }
+      migrateFromV2(conv); save(); return; }
   }catch(e){}
-  CATEGORIES.forEach((c,ci)=>c.items.forEach((it,ii)=>{ if(PRE_OWNED.includes(it)) status[ci+"-"+ii]={b:true}; }));
+  // primeira vez
+  blankState();
+  CATEGORIES.forEach(c=>c.items.forEach(l=>{ if(PRE_OWNED.includes(l)) bought[bid(c.name,l)]=true; }));
 }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify({v:2,status,added,userCats,iconOverrides})); }catch(e){} }
+function exportObj(){ return {v:3,bought,trashItems,trashCats,purgedItems,purgedCats,added,userCats,iconOverrides}; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(exportObj())); }catch(e){} }
 
-const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-const isEx = id => !!(status[id]&&status[id].ex);
-const isB  = id => !!(status[id]&&status[id].b);
-const newId = () => "i-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6);
-
+/* ===================== montagem das categorias ===================== */
 function allCats(){
-  const out = CATEGORIES.map((c,ci)=>{
-    const key="c"+ci;
-    const base=c.items.map((label,ii)=>({id:ci+"-"+ii,label,custom:false}));
-    const extra=(added[key]||[]).map(x=>({id:x.id,label:x.label,custom:true}));
-    return {key,icon:iconOverrides[key]||c.icon,name:c.name,user:false,items:base.concat(extra)};
+  const out=[];
+  CATEGORIES.forEach(function(c){
+    const key=ckey(c.name);
+    if(purgedCats[key]) return;
+    const base=c.items.map(function(l){return {id:bid(c.name,l),label:l,custom:false};}).filter(function(it){return !purgedItems[it.id];});
+    const extra=(added[key]||[]).map(function(x){return {id:x.id,label:x.label,custom:true};});
+    out.push({key:key,builtin:true,icon:iconOverrides[key]||c.icon,name:c.name,items:base.concat(extra)});
   });
-  userCats.forEach(uc=>{
-    out.push({key:uc.key,icon:uc.icon||"📦",name:uc.name,user:true,items:(added[uc.key]||[]).map(x=>({id:x.id,label:x.label,custom:true}))});
+  userCats.forEach(function(uc){
+    out.push({key:uc.key,builtin:false,icon:uc.icon||"📦",name:uc.name,items:(added[uc.key]||[]).map(function(x){return {id:x.id,label:x.label,custom:true};})});
   });
   return out;
 }
-function matchItem(it){
-  const ex=isEx(it.id), b=isB(it.id);
-  if(filter==="excluidos"){ if(!ex) return false; }
-  else { if(ex) return false; }
+
+function matchVisible(it){
+  if(inTrash(it.id)) return false;
   if(query && !norm(it.label).includes(norm(query))) return false;
-  if(filter==="falta") return !b;
-  if(filter==="comprados") return b;
+  if(filter==="falta") return !isB(it.id);
+  if(filter==="comprados") return isB(it.id);
   return true;
 }
+
 function stats(){
-  let total=0,excl=0,bought=0;
-  allCats().forEach(c=>c.items.forEach(it=>{ total++; if(isEx(it.id))excl++; else if(isB(it.id))bought++; }));
-  const incl=total-excl;
-  return {total,excl,incl,bought,missing:incl-bought,pct:incl?Math.round(bought/incl*100):0};
+  let bC=0,mC=0,exC=0;
+  allCats().forEach(function(cat){
+    if(trashCats[cat.key]){ exC+=cat.items.length; return; }
+    cat.items.forEach(function(it){ if(inTrash(it.id)) exC++; else if(isB(it.id)) bC++; else mC++; });
+  });
+  const incl=bC+mC;
+  return {bought:bC,missing:mC,excl:exC,total:incl,pct:incl?Math.round(bC/incl*100):0};
 }
 
-/* ---------- ações ---------- */
-function toggleBought(id){ const s=status[id]||{}; status[id]={ex:false,b:!s.b}; save(); render(); }
-function toggleEx(id){ const s=status[id]||{}; status[id]={b:s.b,ex:!s.ex}; save(); render(); }
-function toggleOpen(k){ openCats[k]=!openCats[k]; render(); }
-function addItem(catKey,label){ label=(label||"").trim(); if(!label) return; (added[catKey]=added[catKey]||[]).push({id:newId(),label}); openCats[catKey]=true; save(); render(); }
-function deleteAddedItem(id){ for(const k in added){ const i=added[k].findIndex(x=>x.id===id); if(i>=0){ added[k].splice(i,1); break; } } delete status[id]; save(); render(); }
-function setIcon(key,emo){ if(/^c\d+$/.test(key)) iconOverrides[key]=emo; else{ const u=userCats.find(c=>c.key===key); if(u) u.icon=emo; } save(); render(); }
-function deleteCategory(key){ (added[key]||[]).forEach(it=>delete status[it.id]); delete added[key]; userCats=userCats.filter(c=>c.key!==key); delete openCats[key]; save(); render(); }
-function reset(){ if(!confirm("Recomeçar do zero? Isso limpa todas as marcações, categorias e itens adicionados.")) return; status={}; added={}; userCats=[]; iconOverrides={}; openCats={}; save(); render(); }
+function collectTrash(){
+  const cats=[],items=[];
+  allCats().forEach(function(cat){
+    if(trashCats[cat.key]){ if(!query||norm(cat.name).includes(norm(query))) cats.push(cat); return; }
+    cat.items.forEach(function(it){ if(inTrash(it.id)){ if(!query||norm(it.label).includes(norm(query))) items.push({id:it.id,label:it.label,custom:it.custom,cat:cat.name}); } });
+  });
+  return {cats,items};
+}
 
-/* ---------- backup ---------- */
+/* ===================== ações ===================== */
+function toggleBought(id){ if(bought[id]) delete bought[id]; else bought[id]=true; save(); render(); }
+function trashItem(id){ trashItems[id]=true; save(); render(); }
+function restoreItem(id){ delete trashItems[id]; save(); render(); }
+function purgeItem(id){ delete trashItems[id]; delete bought[id]; if(id.charAt(0)==="b"){ purgedItems[id]=true; } else { for(const k in added){ const i=added[k].findIndex(x=>x.id===id); if(i>=0){ added[k].splice(i,1); break; } } } save(); render(); }
+function trashCat(key){ trashCats[key]=true; save(); render(); }
+function restoreCat(key){ delete trashCats[key]; save(); render(); }
+function purgeCat(key){ delete trashCats[key]; if(key.charAt(0)==="c"){ purgedCats[key]=true; } else { (added[key]||[]).forEach(it=>{delete bought[it.id];delete trashItems[it.id];}); delete added[key]; userCats=userCats.filter(c=>c.key!==key); } save(); render(); }
+function addItem(catKey,label){ label=(label||"").trim(); if(!label) return; (added[catKey]=added[catKey]||[]).push({id:newId(),label}); openCats[catKey]=true; save(); render(); }
+function setIcon(key,emo){ if(key.charAt(0)==="c") iconOverrides[key]=emo; else { const u=userCats.find(c=>c.key===key); if(u) u.icon=emo; } save(); render(); }
+function toggleOpen(k){ openCats[k]=!openCats[k]; render(); }
+function reset(){ if(!confirm("Recomeçar do zero? Isso apaga TODAS as marcações, categorias, itens adicionados e a lixeira.")) return; blankState(); save(); render(); }
+
+/* ===================== backup ===================== */
 const enc = s => btoa(unescape(encodeURIComponent(s)));
 const dec = s => decodeURIComponent(escape(atob(s)));
-function exportObj(){ return {v:2,status,added,userCats,iconOverrides}; }
 function exportCode(){ return enc(JSON.stringify(exportObj())); }
 function importData(raw){
   raw=(raw||"").trim(); if(!raw) return false;
-  let obj=null;
-  try{ obj=JSON.parse(raw); }catch(e){ try{ obj=JSON.parse(dec(raw)); }catch(e2){ return false; } }
-  if(!obj||typeof obj!=="object"||!("status" in obj)) return false;
-  status=obj.status||{}; added=obj.added||{}; userCats=obj.userCats||[]; iconOverrides=obj.iconOverrides||{};
+  let o=null;
+  try{ o=JSON.parse(raw); }catch(e){ try{ o=JSON.parse(dec(raw)); }catch(e2){ return false; } }
+  if(!o||typeof o!=="object") return false;
+  if("bought" in o || o.v===3){
+    bought=o.bought||{};trashItems=o.trashItems||{};trashCats=o.trashCats||{};purgedItems=o.purgedItems||{};purgedCats=o.purgedCats||{};added=o.added||{};userCats=o.userCats||[];iconOverrides=o.iconOverrides||{};
+  } else if("status" in o){ migrateFromV2(o); }
+  else return false;
   save(); return true;
 }
 
-/* ---------- ícones svg ---------- */
-const ic = {
+/* ===================== ícones svg ===================== */
+const ic={
   check:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
-  x:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
-  plus:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
   trash:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
   chev:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
   reset:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>',
 };
-const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 
-/* ---------- render ---------- */
+/* ===================== render ===================== */
 function render(){
-  const sc = window.scrollY;
-  const st = stats();
-  document.getElementById("pct").textContent = st.pct+"%";
-  document.getElementById("barfill").style.width = st.pct+"%";
-  document.getElementById("s-bought").textContent = st.bought;
-  document.getElementById("s-missing").textContent = st.missing;
-  document.getElementById("s-excl").textContent = st.excl;
+  const sc=window.scrollY, st=stats();
+  document.getElementById("pct").textContent=st.pct+"%";
+  document.getElementById("barfill").style.width=st.pct+"%";
+  document.getElementById("s-bought").textContent=st.bought;
+  document.getElementById("s-missing").textContent=st.missing;
+  document.getElementById("s-excl").textContent=st.excl;
 
   const tabsData=[["tudo","Tudo",st.total],["falta","Falta comprar",st.missing],["comprados","Comprados",st.bought],["excluidos","Excluídos",st.excl]];
-  document.getElementById("tabs").innerHTML = tabsData.map(function(t){
-    return '<button class="tab tap '+(filter===t[0]?'on':'')+'" data-tab="'+t[0]+'">'+t[1]+'<span class="n">'+t[2]+'</span></button>';
-  }).join("");
+  document.getElementById("tabs").innerHTML=tabsData.map(t=>'<button class="tab tap '+(filter===t[0]?'on':'')+'" data-tab="'+t[0]+'">'+t[1]+'<span class="n">'+t[2]+'</span></button>').join("");
 
+  document.getElementById("list").innerHTML = (filter==="excluidos") ? renderTrash() : renderList();
+  document.getElementById("qclear").style.display=query?'block':'none';
+  window.scrollTo(0,sc);
+}
+
+function renderList(){
   const expandAll = filter!=="tudo" || query.trim()!=="";
   const canAdd = filter==="tudo" && query.trim()==="";
   let html="";
   allCats().forEach(function(cat){
-    const visible = cat.items.filter(matchItem);
-    const inclN = cat.items.filter(function(i){return !isEx(i.id);}).length;
-    const boughtN = cat.items.filter(function(i){return !isEx(i.id)&&isB(i.id);}).length;
-    if(visible.length===0 && !(canAdd)) return;            // esconde no modo filtrado
-    if(visible.length===0 && canAdd && cat.items.length>0 && !cat.user) return; // esconde built-in totalmente excluída
-    const open = expandAll || openCats[cat.key];
+    if(trashCats[cat.key]) return;                       // categoria na lixeira não aparece aqui
+    const visible=cat.items.filter(matchVisible);
+    const inclN=cat.items.filter(i=>!inTrash(i.id)).length;
+    const boughtN=cat.items.filter(i=>!inTrash(i.id)&&isB(i.id)).length;
+    if(visible.length===0 && !canAdd) return;
+    const open=expandAll||openCats[cat.key];
 
-    html += '<section><div class="chead">';
-    html += '<button class="emoji-btn tap" data-icon="'+cat.key+'" aria-label="Trocar ícone">'+cat.icon+'</button>';
-    html += '<button class="chead-main tap" data-open="'+(expandAll?'':cat.key)+'"><span class="title"><b>'+esc(cat.name)+'</b><small>'+boughtN+'/'+inclN+' comprados'+(expandAll&&visible.length?(' · '+visible.length+' aqui'):'')+'</small></span>'+(expandAll?'':'<span class="chev '+(open?'open':'')+'">'+ic.chev+'</span>')+'</button>';
-    if(cat.user) html += '<button class="icbtn tap" data-delcat="'+cat.key+'" aria-label="Excluir categoria">'+ic.trash+'</button>';
-    html += '</div>';
+    html+='<section><div class="chead">';
+    html+='<button class="emoji-btn tap" data-icon="'+cat.key+'" aria-label="Trocar ícone">'+cat.icon+'</button>';
+    html+='<button class="chead-main tap" data-open="'+(expandAll?'':cat.key)+'"><span class="title"><b>'+esc(cat.name)+'</b><small>'+boughtN+'/'+inclN+' comprados'+(expandAll&&visible.length?(' · '+visible.length+' aqui'):'')+'</small></span>'+(expandAll?'':'<span class="chev '+(open?'open':'')+'">'+ic.chev+'</span>')+'</button>';
+    html+='<button class="icbtn tap" data-trashcat="'+cat.key+'" aria-label="Mover categoria para excluídos">'+ic.trash+'</button>';
+    html+='</div>';
 
     if(open){
       if(visible.length){
-        html += '<ul>'+visible.map(function(it){
-          const ex=isEx(it.id), b=isB(it.id);
-          return '<li class="'+(b&&!ex?'bought':'')+'">'
-            +'<button class="chk tap '+(b&&!ex?'on':'')+'" data-buy="'+it.id+'" aria-label="Marcar comprado">'+(b&&!ex?ic.check:'')+'</button>'
+        html+='<ul>'+visible.map(function(it){
+          const b=isB(it.id);
+          return '<li class="'+(b?'bought':'')+'">'
+            +'<button class="chk tap '+(b?'on':'')+'" data-buy="'+it.id+'" aria-label="Marcar comprado">'+(b?ic.check:'')+'</button>'
             +'<span class="label" data-buy2="'+it.id+'">'+esc(it.label)+'</span>'
-            +(b&&!ex?'<span class="okpill">ok</span>':'')
-            +'<button class="icbtn tap '+(ex?'exc':'')+'" data-ex="'+it.id+'" aria-label="'+(ex?'Incluir':'Excluir')+'">'+(ex?ic.plus:ic.x)+'</button>'
-            +(it.custom?'<button class="icbtn tap" data-del="'+it.id+'" aria-label="Apagar item">'+ic.trash+'</button>':'')
+            +(b?'<span class="okpill">ok</span>':'')
+            +'<button class="icbtn tap" data-trashitem="'+it.id+'" aria-label="Mover para excluídos">'+ic.trash+'</button>'
             +'</li>';
         }).join("")+'</ul>';
       }
       if(canAdd){
-        html += '<div class="additem"><input class="add-inp" data-addcat="'+cat.key+'" placeholder="Adicionar item…"><button class="add-go tap" data-addgo="'+cat.key+'" aria-label="Adicionar">+</button></div>';
+        html+='<div class="additem"><input class="add-inp" data-addcat="'+cat.key+'" placeholder="Adicionar item…"><button class="add-go tap" data-addgo="'+cat.key+'" aria-label="Adicionar">+</button></div>';
       }
     }
-    html += '</section>';
+    html+='</section>';
   });
-
-  if(!html) html = '<div class="empty"><p style="font-size:15px;margin:0">Nada por aqui.</p><p style="font-size:13px;margin-top:6px">Tente outro filtro ou limpe a busca.</p></div>';
-  html += '<button class="reset tap" id="resetbtn">'+ic.reset+' Recomeçar do zero</button>';
-  document.getElementById("list").innerHTML = html;
-  document.getElementById("qclear").style.display = query?'block':'none';
-  window.scrollTo(0,sc);
+  if(!html) html='<div class="empty"><p style="font-size:15px;margin:0">Nada por aqui.</p><p style="font-size:13px;margin-top:6px">Tente outro filtro ou limpe a busca.</p></div>';
+  html+='<button class="reset tap" id="resetbtn">'+ic.reset+' Recomeçar do zero</button>';
+  return html;
 }
 
-/* ---------- modais ---------- */
+function renderTrash(){
+  const {cats,items}=collectTrash();
+  let html="";
+  if(!cats.length && !items.length){
+    return '<div class="empty"><p style="font-size:15px;margin:0">A lixeira está vazia.</p><p style="font-size:13px;margin-top:6px">Itens e categorias que você excluir aparecem aqui para restaurar ou apagar de vez.</p></div>';
+  }
+  if(cats.length){
+    html+='<div class="trash-title">Categorias na lixeira</div><section>';
+    cats.forEach(function(cat){
+      html+='<div class="trash-row"><span class="emoji-static">'+cat.icon+'</span><span class="trash-name">'+esc(cat.name)+'<small>'+cat.items.length+' itens</small></span>'
+        +'<button class="mini tap" data-restorecat="'+cat.key+'">Restaurar</button>'
+        +'<button class="mini danger tap" data-purgecat="'+cat.key+'">Excluir</button></div>';
+    });
+    html+='</section>';
+  }
+  if(items.length){
+    html+='<div class="trash-title">Itens na lixeira</div><section>';
+    items.forEach(function(it){
+      html+='<div class="trash-row"><span class="trash-name">'+esc(it.label)+'<small>'+esc(it.cat)+'</small></span>'
+        +'<button class="mini tap" data-restoreitem="'+it.id+'">Restaurar</button>'
+        +'<button class="mini danger tap" data-purgeitem="'+it.id+'">Excluir</button></div>';
+    });
+    html+='</section>';
+  }
+  return html;
+}
+
+/* ===================== modais ===================== */
 function openModal(html){ document.getElementById("modal").innerHTML=html; document.getElementById("overlay").classList.add("on"); }
 function closeModal(){ document.getElementById("overlay").classList.remove("on"); }
-const M = () => document.getElementById("modal");
-
-function emojiGrid(id){ return '<div class="emoji-grid" id="'+id+'">'+EMOJIS.map(function(e){return '<button class="emoji-opt" data-emo="'+e+'">'+e+'</button>';}).join("")+'</div>'; }
+const M=()=>document.getElementById("modal");
+function emojiGrid(id){ return '<div class="emoji-grid" id="'+id+'">'+EMOJIS.map(e=>'<button class="emoji-opt" data-emo="'+e+'">'+e+'</button>').join("")+'</div>'; }
 
 function openEmojiPicker(catKey){
-  openModal('<h3>Trocar ícone</h3><p class="lbl">Escolha um:</p>'+emojiGrid("ep")
-    +'<p class="lbl">Ou digite/cole um emoji:</p><input type="text" id="ep-custom" maxlength="6" placeholder="🏠">'
-    +'<div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn" id="ep-save">Usar digitado</button></div>');
-  M().querySelectorAll("#ep .emoji-opt").forEach(function(b){ b.addEventListener("click",function(){ setIcon(catKey,b.dataset.emo); closeModal(); toast("Ícone atualizado"); }); });
+  openModal('<h3>Trocar ícone</h3><p class="lbl">Escolha um:</p>'+emojiGrid("ep")+'<p class="lbl">Ou digite/cole um emoji:</p><input type="text" id="ep-custom" maxlength="6" placeholder="🏠"><div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn" id="ep-save">Usar digitado</button></div>');
+  M().querySelectorAll("#ep .emoji-opt").forEach(b=>b.addEventListener("click",function(){ setIcon(catKey,b.dataset.emo); closeModal(); toast("Ícone atualizado"); }));
   M().querySelector("#ep-save").addEventListener("click",function(){ const v=M().querySelector("#ep-custom").value.trim(); if(v){ setIcon(catKey,v); closeModal(); toast("Ícone atualizado"); } });
 }
 
 function openNewCat(){
-  openModal('<h3>Nova categoria</h3><p class="lbl">Nome</p><input type="text" id="nc-name" placeholder="Ex.: Bebê, Garagem, Festa…">'
-    +'<p class="lbl">Ícone</p>'+emojiGrid("nc")
-    +'<div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn" id="nc-create">Criar</button></div>');
+  openModal('<h3>Nova categoria</h3><p class="lbl">Nome</p><input type="text" id="nc-name" placeholder="Ex.: Bebê, Garagem, Festa…"><p class="lbl">Ícone</p>'+emojiGrid("nc")+'<div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn" id="nc-create">Criar</button></div>');
   let chosen="📦";
-  M().querySelectorAll("#nc .emoji-opt").forEach(function(b){ b.addEventListener("click",function(){ chosen=b.dataset.emo; M().querySelectorAll("#nc .emoji-opt").forEach(function(x){x.classList.remove("sel");}); b.classList.add("sel"); }); });
+  M().querySelectorAll("#nc .emoji-opt").forEach(b=>b.addEventListener("click",function(){ chosen=b.dataset.emo; M().querySelectorAll("#nc .emoji-opt").forEach(x=>x.classList.remove("sel")); b.classList.add("sel"); }));
   M().querySelector("#nc-create").addEventListener("click",function(){ const name=M().querySelector("#nc-name").value.trim(); if(!name){ toast("Dê um nome à categoria"); return; } const key="u-"+Date.now().toString(36); userCats.push({key,name,icon:chosen}); added[key]=[]; openCats[key]=true; save(); closeModal(); render(); toast("Categoria criada"); });
 }
 
 function openBackup(){
-  const code = exportCode();
-  openModal('<h3>Backup / Enviar para outro celular</h3>'
-    +'<p class="lbl">Seu código (envie por WhatsApp, e-mail, etc.):</p>'
-    +'<textarea id="bk-out" readonly>'+code+'</textarea>'
-    +'<div class="modal-actions"><button class="btn" id="bk-copy">Copiar código</button><button class="btn ghost" id="bk-share">Compartilhar</button><button class="btn ghost" id="bk-file">Baixar arquivo</button></div>'
-    +'<hr><p class="lbl">Receber de outro celular (cole o código):</p>'
-    +'<textarea id="bk-in" placeholder="cole aqui o código recebido"></textarea>'
-    +'<div class="modal-actions"><button class="btn" id="bk-import">Importar código</button><label class="btn ghost filelabel">Importar arquivo<input type="file" id="bk-fin" accept=".json,.txt" hidden></label></div>'
-    +'<p class="warn">⚠️ Importar substitui os dados deste aparelho.</p>'
-    +'<div class="modal-actions"><button class="btn ghost" data-close>Fechar</button></div>');
-
-  M().querySelector("#bk-copy").addEventListener("click",function(){
-    const t=M().querySelector("#bk-out"); t.select();
-    if(navigator.clipboard){ navigator.clipboard.writeText(code).then(function(){toast("Código copiado");},function(){document.execCommand("copy");toast("Código copiado");}); }
-    else { document.execCommand("copy"); toast("Código copiado"); }
-  });
-  M().querySelector("#bk-share").addEventListener("click",function(){
-    if(navigator.share){ navigator.share({title:"Casa Nova — backup",text:code}).catch(function(){}); }
-    else { const t=M().querySelector("#bk-out"); t.select(); document.execCommand("copy"); toast("Compartilhamento indisponível — código copiado"); }
-  });
-  M().querySelector("#bk-file").addEventListener("click",function(){
-    const blob=new Blob([JSON.stringify(exportObj(),null,2)],{type:"application/json"});
-    const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="casa-nova-backup.json"; a.click(); URL.revokeObjectURL(a.href); toast("Arquivo baixado");
-  });
-  M().querySelector("#bk-import").addEventListener("click",function(){
-    if(!confirm("Importar vai substituir os dados deste aparelho. Continuar?")) return;
-    if(importData(M().querySelector("#bk-in").value)){ closeModal(); render(); toast("Dados importados"); } else toast("Código inválido");
-  });
-  M().querySelector("#bk-fin").addEventListener("change",function(e){
-    const f=e.target.files[0]; if(!f) return;
-    if(!confirm("Importar vai substituir os dados deste aparelho. Continuar?")) return;
-    const r=new FileReader(); r.onload=function(){ if(importData(r.result)){ closeModal(); render(); toast("Dados importados"); } else toast("Arquivo inválido"); }; r.readAsText(f);
-  });
+  const code=exportCode();
+  openModal('<h3>Backup / Enviar para outro celular</h3><p class="lbl">Seu código (envie por WhatsApp, e-mail, etc.):</p><textarea id="bk-out" readonly>'+code+'</textarea><div class="modal-actions"><button class="btn" id="bk-copy">Copiar código</button><button class="btn ghost" id="bk-share">Compartilhar</button><button class="btn ghost" id="bk-file">Baixar arquivo</button></div><hr><p class="lbl">Receber de outro celular (cole o código):</p><textarea id="bk-in" placeholder="cole aqui o código recebido"></textarea><div class="modal-actions"><button class="btn" id="bk-import">Importar código</button><label class="btn ghost filelabel">Importar arquivo<input type="file" id="bk-fin" accept=".json,.txt" hidden></label></div><p class="warn">⚠️ Importar substitui os dados deste aparelho.</p><div class="modal-actions"><button class="btn ghost" data-close>Fechar</button></div>');
+  M().querySelector("#bk-copy").addEventListener("click",function(){ const t=M().querySelector("#bk-out"); t.select(); if(navigator.clipboard){ navigator.clipboard.writeText(code).then(()=>toast("Código copiado"),()=>{document.execCommand("copy");toast("Código copiado");}); } else { document.execCommand("copy"); toast("Código copiado"); } });
+  M().querySelector("#bk-share").addEventListener("click",function(){ if(navigator.share){ navigator.share({title:"Casa Nova — backup",text:code}).catch(()=>{}); } else { const t=M().querySelector("#bk-out"); t.select(); document.execCommand("copy"); toast("Código copiado"); } });
+  M().querySelector("#bk-file").addEventListener("click",function(){ const blob=new Blob([JSON.stringify(exportObj(),null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="casa-nova-backup.json"; a.click(); URL.revokeObjectURL(a.href); toast("Arquivo baixado"); });
+  M().querySelector("#bk-import").addEventListener("click",function(){ if(!confirm("Importar vai substituir os dados deste aparelho. Continuar?")) return; if(importData(M().querySelector("#bk-in").value)){ closeModal(); render(); toast("Dados importados"); } else toast("Código inválido"); });
+  M().querySelector("#bk-fin").addEventListener("change",function(e){ const f=e.target.files[0]; if(!f) return; if(!confirm("Importar vai substituir os dados deste aparelho. Continuar?")) return; const r=new FileReader(); r.onload=function(){ if(importData(r.result)){ closeModal(); render(); toast("Dados importados"); } else toast("Arquivo inválido"); }; r.readAsText(f); });
 }
 
-/* ---------- toast ---------- */
+/* ===================== toast ===================== */
 let toastT;
-function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(function(){t.classList.remove("on");},1800); }
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),1800); }
 
-/* ---------- eventos ---------- */
-document.addEventListener("click", function(e){
-  const t = e.target.closest("[data-tab],[data-open],[data-buy],[data-buy2],[data-ex],[data-del],[data-delcat],[data-icon],[data-addgo],#resetbtn,#newcat,#backup");
+/* ===================== eventos ===================== */
+document.addEventListener("click",function(e){
+  const t=e.target.closest("[data-tab],[data-open],[data-buy],[data-buy2],[data-trashitem],[data-trashcat],[data-icon],[data-addgo],[data-restoreitem],[data-purgeitem],[data-restorecat],[data-purgecat],#resetbtn,#newcat,#backup");
   if(!t) return;
   if(t.id==="newcat") return openNewCat();
   if(t.id==="backup") return openBackup();
   if(t.id==="resetbtn") return reset();
   if(t.dataset.tab!==undefined){ filter=t.dataset.tab; return render(); }
-  if(t.dataset.icon!==undefined){ return openEmojiPicker(t.dataset.icon); }
-  if(t.dataset.delcat!==undefined){ if(confirm("Excluir esta categoria e todos os itens dela?")) deleteCategory(t.dataset.delcat); return; }
+  if(t.dataset.icon!==undefined) return openEmojiPicker(t.dataset.icon);
+  if(t.dataset.trashcat!==undefined) return trashCat(t.dataset.trashcat);
+  if(t.dataset.trashitem!==undefined) return trashItem(t.dataset.trashitem);
   if(t.dataset.open){ return toggleOpen(t.dataset.open); }
-  if(t.dataset.buy!==undefined && t.dataset.buy){ return toggleBought(t.dataset.buy); }
-  if(t.dataset.buy2!==undefined && t.dataset.buy2){ return toggleBought(t.dataset.buy2); }
-  if(t.dataset.ex!==undefined){ return toggleEx(t.dataset.ex); }
-  if(t.dataset.del!==undefined){ return deleteAddedItem(t.dataset.del); }
-  if(t.dataset.addgo!==undefined){
-    const inp=document.querySelector('.add-inp[data-addcat="'+t.dataset.addgo+'"]');
-    if(inp){ addItem(t.dataset.addgo, inp.value); }
-    return;
-  }
+  if(t.dataset.buy!==undefined && t.dataset.buy) return toggleBought(t.dataset.buy);
+  if(t.dataset.buy2!==undefined && t.dataset.buy2) return toggleBought(t.dataset.buy2);
+  if(t.dataset.restoreitem!==undefined) return restoreItem(t.dataset.restoreitem);
+  if(t.dataset.purgeitem!==undefined){ if(confirm("Excluir este item definitivamente? Não dá para desfazer.")) purgeItem(t.dataset.purgeitem); return; }
+  if(t.dataset.restorecat!==undefined) return restoreCat(t.dataset.restorecat);
+  if(t.dataset.purgecat!==undefined){ if(confirm("Excluir esta categoria definitivamente, com todos os itens? Não dá para desfazer.")) purgeCat(t.dataset.purgecat); return; }
+  if(t.dataset.addgo!==undefined){ const inp=document.querySelector('.add-inp[data-addcat="'+t.dataset.addgo+'"]'); if(inp) addItem(t.dataset.addgo,inp.value); return; }
 });
-document.addEventListener("keydown", function(e){
-  if(e.key==="Enter" && e.target.classList && e.target.classList.contains("add-inp")){
-    addItem(e.target.dataset.addcat, e.target.value);
-  }
-});
-document.getElementById("overlay").addEventListener("click", function(e){ if(e.target.id==="overlay"||e.target.closest("[data-close]")) closeModal(); });
-document.getElementById("q").addEventListener("input", function(e){ query=e.target.value; render(); });
-document.getElementById("qclear").addEventListener("click", function(){ query=""; document.getElementById("q").value=""; render(); });
+document.addEventListener("keydown",function(e){ if(e.key==="Enter"&&e.target.classList&&e.target.classList.contains("add-inp")) addItem(e.target.dataset.addcat,e.target.value); });
+document.getElementById("overlay").addEventListener("click",function(e){ if(e.target.id==="overlay"||e.target.closest("[data-close]")) closeModal(); });
+document.getElementById("q").addEventListener("input",function(e){ query=e.target.value; render(); });
+document.getElementById("qclear").addEventListener("click",function(){ query=""; document.getElementById("q").value=""; render(); });
 
 load(); render();
 if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
